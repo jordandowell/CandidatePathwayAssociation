@@ -11,7 +11,7 @@
 ## Mason/Goolsby Lab modified steps (assuming sunflower GWAS performed in a SINGLE environment)
 ### Initial data file prep:
 1. Put a .csv data file in the data/ directory. The first row should have column names, and each subsequent row corresponds to a SAM line.
-2. The first column should have the SAM line number in EXACTLY the following format: e.g. SAM002, SAM073, SAM241, etc.
+2. The first column should have the SAM line number as either integers or in EXACTLY the following format: e.g. SAM002, SAM073, SAM241, etc.
 3. Remove all special characters in column (trait) names (but don't worry about underscores -- they will be automatically removed). The first character of a trait name should be a letter, the rest of the trait name should be letters and numbers ONLY.
 4. You should leave missing data blank (don't put NA).
 5. Make sure your data are numeric (common errors that break the pipelnie: a space instead of a blank cell; putting N/A instead of a blank cell; a comma instead of a decimal place, etc).
