@@ -1,2 +1,8 @@
-AREA
-Oilpct
+MeanColonization
+MinimumColonization
+MaximumColonization
+RangeofColonization
+LSMeans
+ArithmeticMean
+LSmeanXY
+LSmeanJustX

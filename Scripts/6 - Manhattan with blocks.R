@@ -71,6 +71,7 @@ for (i in 1:length(traits)){
     snips$CHR<- as.integer(gsub("Ha412HOChr","",snips$chr))
     
     snips<-merge(snips,big.list,by.x="rs",by.y="SNP")
+    snips$ps <- as.numeric(snips$ps)
     
     trait.blocks<-colocate[colocate$trait_env==paste(traits[i],envs[q],sep="_"),]
     

@@ -5,6 +5,17 @@
 ### If just downloading the repository
 * Download the zipped repository here (https://github.com/ericgoolsby/GWAS_pipeline/archive/master.zip). 
 
+## Goolsby steps (assuming a single environment)
+1. Make a .csv data file in the data/ directory. The first row should have column names, and each subsequent row corresponds to a SAM line.
+2. The first column should be called SAM (exactly), and each row in this column should have the SAM line number in EXACTLY the following format: e.g. SAM002, SAM073, SAM241, etc.
+3. Remove all special characters in column (trait) names (NO UNDERSCORES -- THIS BREAKS THE PIPELINE). The first character of a trait name should be a letter, the rest of the trait name should be letters and numbers ONLY.
+4. You should leave missing data blank (don't put NA). NOTE: you MUST have one SAM line per row.
+
+
+Copy Phenotype data/GEMMAdrought.csv into a new file.
+The format must match exactly (first column name, which SAM lines in which row, and duplicated data with the following fake environments: Dry logdif Wet).
+2. 
+
 # Sunflower-GWAS-2.0
 
 This is a R only rewrite and extention of the sunflower GWAS pipeline initiated by Rishi Masalia. (Masalia et al., Plos 2018)

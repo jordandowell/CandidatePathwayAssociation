@@ -39,7 +39,7 @@ suggthresh<-0.001
 
 envs<-as.character(read.table("environments_to_run.txt")[,1])
 traits<-as.character(read.table("traits_to_run.txt")[,1])
-pheno.data<-read.csv(paste("Phenotype data/",pheno.name,sep=""))
+pheno.data<-read.csv(paste("data/",pheno.name,sep=""))
 
 
 sig.blocks<-NULL #empty object to merge against

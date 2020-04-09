@@ -1,3 +1,0 @@
-Wet
-Dry
-logdiff

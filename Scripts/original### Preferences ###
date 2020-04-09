@@ -1,5 +1,5 @@
 ###### file names and preferences for the sunflower GWAS pipeline v2 ########
-phenotype file="GEMMAdrought.csv"
+phenotype file="replace1"
 SNP files name="XRQv1_412_261_filtered"
-Multcomp correction value="20562"
+Multcomp correction value="replace2"
 

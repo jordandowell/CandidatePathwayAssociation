@@ -1,0 +1,15 @@
+source("Scripts/functions.R")
+
+process_data(trait_filename = "katie_data.csv")
+set_threshold(method = 2)
+
+#source("Scripts/1 - Phenotype to GEMMA.R")
+#source("Scripts/2 - Make manhattan plots.R")
+#source("Scripts/2b (optional) - Make single environment manhattan plots.R")
+#source("Scripts/3 - Blocks and heatmaps.R")
+#source("Scripts/4 - Trait GWAS colocalization figure.R")
+#source("Scripts/4c - (optional) Per chromosome - Trait GWAS colocalization figure.R")
+#source("Scripts/5 - List genes in regions.R")
+#source("Scripts/6 - Manhattan with blocks.R")
+#source("Scripts/7 - Export PVE per trait to table.R")
+#source("Scripts/8 - Show blocks on haplotype map.R")

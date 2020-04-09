@@ -16,7 +16,7 @@ prefs<-read.table("Scripts/### Preferences ###",header=F,sep="=",skip=1)
 envs<-as.character(read.table("environments_to_run.txt")[,1])
 traits<-as.character(read.table("traits_to_run.txt")[,1])
 
-pheno.data<-fread(paste("Phenotype data/",pheno.name,sep=""))
+pheno.data<-fread(paste("data/",pheno.name,sep=""))
 
 
 setwd("Software")
