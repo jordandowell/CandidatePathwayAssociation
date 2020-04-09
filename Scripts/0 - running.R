@@ -12,7 +12,7 @@ pvalue_cutoff <- 2 # 1 = Bonferroni = 1; 2 = "suggested" 0.001 threshold
 ##############################
 source("Scripts/functions.R")
 process_data(trait_filename = trait_filename)
-set_threshold(method = 2)
+set_threshold(method = pvalue_cutoff)
 ##############################
 ####### END SECTION ##########
 ##############################
