@@ -1,20 +1,28 @@
 # GWAS_pipeline
 ## First use
-### If synching with GitHub (recommended, but requires you know how to use GitHub)
+### Downloading the pipeline
+#### If synching with GitHub (recommended, but requires you know how to use GitHub)
 * Clone https://github.com/ericgoolsby/GWAS_pipeline.git from your Desktop GitHub client (or from command line).
-### If just downloading the repository
+#### If just downloading the repository
 * Download the zipped repository here (https://github.com/ericgoolsby/GWAS_pipeline/archive/master.zip). 
+### Downloadin required software here ().
 
-## Goolsby steps (assuming a single environment)
-1. Make a .csv data file in the data/ directory. The first row should have column names, and each subsequent row corresponds to a SAM line.
-2. The first column should be called SAM (exactly), and each row in this column should have the SAM line number in EXACTLY the following format: e.g. SAM002, SAM073, SAM241, etc.
-3. Remove all special characters in column (trait) names (NO UNDERSCORES -- THIS BREAKS THE PIPELINE). The first character of a trait name should be a letter, the rest of the trait name should be letters and numbers ONLY.
-4. You should leave missing data blank (don't put NA). NOTE: you MUST have one SAM line per row.
+## Mason/Goolsby Lab modified steps (assuming sunflower GWAS performed in a SINGLE environment)
+### Initial data file prep:
+1. Put a .csv data file in the data/ directory. The first row should have column names, and each subsequent row corresponds to a SAM line.
+2. The first column should have the SAM line number in EXACTLY the following format: e.g. SAM002, SAM073, SAM241, etc.
+3. Remove all special characters in column (trait) names (but don't worry about underscores -- they will be automatically removed). The first character of a trait name should be a letter, the rest of the trait name should be letters and numbers ONLY.
+4. You should leave missing data blank (don't put NA).
+5. Make sure your data are numeric (common errors that break the pipelnie: a space instead of a blank cell; putting N/A instead of a blank cell; a comma instead of a decimal place, etc).
+### Running the pipeline:
+6. Open the R project (Sunflower-GWAS-2.0.Rproj).
+7. Open the R script "Scripts/0 - running.R".
+8. If necessary, go to the bottom of script 0 and install required packages (APPENDIX 1).
+9. Edit the required information in SECTION 1, then run. (note: I have to set pvalue_cutoff <- 2 for the pipline to work, as of 4/9/2020).
+10. Run (but do not edit) SECTION 2.
+11. Run the scripts in SECTION 3 one-by-one, checking for warnings and errors along the way. Troubleshoot as needed.
+12. Results will be found in Tables/ and Plots/.
 
-
-Copy Phenotype data/GEMMAdrought.csv into a new file.
-The format must match exactly (first column name, which SAM lines in which row, and duplicated data with the following fake environments: Dry logdif Wet).
-2. 
 
 # Sunflower-GWAS-2.0
 
