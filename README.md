@@ -5,7 +5,8 @@
 * Clone https://github.com/ericgoolsby/GWAS_pipeline.git from your Desktop GitHub client (or from command line).
 #### If just downloading the repository
 * Download the zipped repository here (https://github.com/ericgoolsby/GWAS_pipeline/archive/master.zip). 
-### Downloadin required software here ().
+### Downloading required software
+* Download required software here (https://drive.google.com/open?id=1tQ7ve20fS53lFqpet_-mCxvGBsRZULrt) and unzip it to the Software/ directory. IMPORTANT: MAKE SURE ALL FILES (e.g. XRQv1_412_261_filtered.fam) ARE IN Software/ DIRECTORY (i.e., not in a subfolder).
 
 ## Mason/Goolsby Lab modified steps (assuming sunflower GWAS performed in a SINGLE environment)
 ### Initial data file prep:
