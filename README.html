@@ -369,12 +369,37 @@ summary {
 <h1>GWAS_pipeline</h1>
 <div id="first-use" class="section level2">
 <h2>First use</h2>
-<div id="if-synching-with-github-recommended-but-requires-you-know-how-to-use-github" class="section level3">
-<h3>If synching with GitHub (recommended, but requires you know how to use GitHub)</h3>
+<div id="downloading-the-pipeline" class="section level3">
+<h3>Downloading the pipeline</h3>
+<div id="if-synching-with-github-recommended-but-requires-you-know-how-to-use-github" class="section level4">
+<h4>If synching with GitHub (recommended, but requires you know how to use GitHub)</h4>
 <ul>
-<li>Clone <a href="https://github.com/ericgoolsby/GWAS_pipeline.git" class="uri">https://github.com/ericgoolsby/GWAS_pipeline.git</a> from your Desktop GitHub client (or from command line). ### If just downloading the repository</li>
-<li>Download the zipped repository here (<a href="https://github.com/ericgoolsby/GWAS_pipeline/archive/master.zip" class="uri">https://github.com/ericgoolsby/GWAS_pipeline/archive/master.zip</a>).</li>
+<li>Clone <a href="https://github.com/ericgoolsby/GWAS_pipeline.git" class="uri">https://github.com/ericgoolsby/GWAS_pipeline.git</a> from your Desktop GitHub client (or from command line). #### If just downloading the repository</li>
+<li>Download the zipped repository here (<a href="https://github.com/ericgoolsby/GWAS_pipeline/archive/master.zip" class="uri">https://github.com/ericgoolsby/GWAS_pipeline/archive/master.zip</a>). ### Downloading required software</li>
+<li>Download required software here (<a href="https://drive.google.com/open?id=1tQ7ve20fS53lFqpet_-mCxvGBsRZULrt" class="uri">https://drive.google.com/open?id=1tQ7ve20fS53lFqpet_-mCxvGBsRZULrt</a>) and unzip it to the Software/ directory. IMPORTANT: MAKE SURE ALL FILES (e.g. XRQv1_412_261_filtered.fam) ARE IN Software/ DIRECTORY (i.e., not in a subfolder).</li>
 </ul>
+</div>
+</div>
+</div>
+<div id="masongoolsby-lab-modified-steps-assuming-sunflower-gwas-performed-in-a-single-environment" class="section level2">
+<h2>Mason/Goolsby Lab modified steps (assuming sunflower GWAS performed in a SINGLE environment)</h2>
+<div id="initial-data-file-prep" class="section level3">
+<h3>Initial data file prep:</h3>
+<ol style="list-style-type: decimal">
+<li>Put a .csv data file in the data/ directory. The first row should have column names, and each subsequent row corresponds to a SAM line.</li>
+<li>The first column should have the SAM line number as either integers or in EXACTLY the following format: e.g. SAM002, SAM073, SAM241, etc.</li>
+<li>Remove all special characters in column (trait) names (but don’t worry about underscores – they will be automatically removed). The first character of a trait name should be a letter, the rest of the trait name should be letters and numbers ONLY.</li>
+<li>You should leave missing data blank (don’t put NA).</li>
+<li>Make sure your data are numeric (common errors that break the pipelnie: a space instead of a blank cell; putting N/A instead of a blank cell; a comma instead of a decimal place, etc). ### Running the pipeline:</li>
+<li>Set the working directory to the root (top-level) directory of the pipeline. OR open the R project (Sunflower-GWAS-2.0.Rproj).</li>
+<li>Open the R script “Scripts/0 - running.R”.</li>
+<li>If necessary, go to the bottom of script 0 and install required packages (APPENDIX 1).</li>
+<li>Edit the required information in SECTION 1, then run. (note: I have to set pvalue_cutoff &lt;- 2 for the pipline to work, as of 4/9/2020).</li>
+<li>Run (but do not edit) SECTION 2.</li>
+<li>Run the scripts in SECTION 3 one-by-one, checking for warnings and errors along the way. Troubleshoot as needed.</li>
+<li>Results will be found in Tables/ and Plots/.</li>
+<li>IMPORTANT: ##### The pipeline assumes you grew the plants up in “Wet” and “Dry” environments, and it also analyzes the logdiff of the two. The only valid results are labeled Wet. THE RESULTS FOR DRY AND LOGDIFF ARE MEANINGLESS (BASED ON SIMULATD PLACEHOLDER DATA).</li>
+</ol>
 </div>
 </div>
 </div>

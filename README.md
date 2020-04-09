@@ -1,5 +1,5 @@
 # GWAS_pipeline
-## First use
+## First use (NOTE: requires Linux (Ubuntu) partition on your computer)
 ### Downloading the pipeline
 #### If synching with GitHub (recommended, but requires you know how to use GitHub)
 * Clone https://github.com/ericgoolsby/GWAS_pipeline.git from your Desktop GitHub client (or from command line).
@@ -23,6 +23,7 @@
 10. Run (but do not edit) SECTION 2.
 11. Run the scripts in SECTION 3 one-by-one, checking for warnings and errors along the way. Troubleshoot as needed.
 12. Results will be found in Tables/ and Plots/.
+13. IMPORTANT: The pipeline assumes you grew the plants up in "Wet" and "Dry" environments, and it also analyzes the logdiff of the two. The only valid results are labeled Wet. THE RESULTS FOR DRY AND LOGDIFF ARE MEANINGLESS (BASED ON SIMULATD PLACEHOLDER DATA).
 
 
 # Sunflower-GWAS-2.0
