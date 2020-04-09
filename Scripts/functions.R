@@ -54,6 +54,9 @@ set_threshold <- function(method)
   prefs <- readLines("Scripts/original### Preferences ###")
   thresh <-grep("replace2",prefs)
   prefs[thresh] <- gsub(pattern = "replace2",replacement = ntests,x = prefs[thresh])
+  original_prefs <- readLines("Scripts/### Preferences ###")
+  prefs[-thresh] <- original_prefs[-thresh]
   writeLines(text = prefs,con = "Scripts/### Preferences ###")
+  
 }
 

@@ -16,7 +16,7 @@
 4. You should leave missing data blank (don't put NA).
 5. Make sure your data are numeric (common errors that break the pipelnie: a space instead of a blank cell; putting N/A instead of a blank cell; a comma instead of a decimal place, etc).
 ### Running the pipeline:
-6. Open the R project (Sunflower-GWAS-2.0.Rproj).
+6. Set the working directory to the root (top-level) directory of the pipeline. OR open the R project (Sunflower-GWAS-2.0.Rproj).
 7. Open the R script "Scripts/0 - running.R".
 8. If necessary, go to the bottom of script 0 and install required packages (APPENDIX 1).
 9. Edit the required information in SECTION 1, then run. (note: I have to set pvalue_cutoff <- 2 for the pipline to work, as of 4/9/2020).
