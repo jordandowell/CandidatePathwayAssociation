@@ -1,10 +1,3 @@
-# GWAS_pipeline
-## First use
-### If synching with GitHub (recommended, but requires you know how to use GitHub)
-* Clone https://github.com/ericgoolsby/GWAS_pipeline.git from your Desktop GitHub client (or from command line).
-### If just downloading the repository
-* Download the zipped repository here (https://github.com/ericgoolsby/GWAS_pipeline/archive/master.zip). 
-
 # Sunflower-GWAS-2.0
 
 This is a R only rewrite and extention of the sunflower GWAS pipeline initiated by Rishi Masalia. (Masalia et al., Plos 2018)
@@ -18,7 +11,7 @@ This Sunflower-GWAS-2.0 pipeline adds:
 
 UPDATE 2019/05/10: Works like a charm. Needs software data from separate location though
 
-![](Overview.jpg)
+![picture](Overview.jpg)
 
 
 Ongoing improvements:
