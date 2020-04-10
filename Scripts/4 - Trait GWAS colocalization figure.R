@@ -25,7 +25,7 @@ colocate$sighap<-sighap_to_genomehap$sig.hap[match(colocate$hapID,sighap_to_geno
 colocate$region<-sighap_to_genomehap$colocate.region[match(colocate$hapID,sighap_to_genomehap$genome.hap)]
 colocate$trait_env<-paste(colocate$trait,colocate$env,sep="_")
 
-traits.per.block<-colocate %>% group_by(sighap) %>% summarise(trait_num=length(trait_env))
+traits.per.block<-colocate %>% group_by(sighap) %>% dplyr::summarise(trait_num=length(trait_env))
 
 colocate<-colocate %>% separate(sighap, sep= "_", c("chromosome","blocknum"),remove=F) %>%
   arrange(chromosome, blocknum)
@@ -52,7 +52,7 @@ colocate<-colocate %>% group_by(region,trait_env) %>% dplyr::summarize(trait=tra
                                                                        beta.sign=factor(sign(mean(beta.sign))))
 
 
-chrom.borders<-colocate %>% group_by(chromosome)%>% summarise(bin=length(unique(region))) %>% arrange(as.integer(chromosome))
+chrom.borders<-colocate %>% group_by(chromosome)%>% dplyr::summarise(bin=length(unique(region))) %>% arrange(as.integer(chromosome))
 chrom.borders<-cumsum(chrom.borders$bin)
 chrom.borders<-chrom.borders+0.5
 chrom.borders<-chrom.borders[1:length(chrom.borders)-1]

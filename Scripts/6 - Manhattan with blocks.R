@@ -84,7 +84,7 @@ for (i in 1:length(traits)){
     
     chr_cumsum<- snips %>% ## code from https://www.r-graph-gallery.com/wp-content/uploads/2018/02/Manhattan_plot_in_R.html
             group_by(CHR) %>% 
-            summarise(chr_len=max(ps)) %>%  # Compute chromosome size
+            dplyr::summarise(chr_len=max(ps)) %>%  # Compute chromosome size
             mutate(tot=cumsum(chr_len)-chr_len) %>% # Calculate cumulative position of each chromosome
             select(-chr_len)
     

@@ -50,12 +50,12 @@ write.csv(genelist,"Datafiles/SaltGWAS results/genelist extended.csv",row.names=
 write.excel(colocate.count)
 
 trait.count <- colocate %>% group_by(trait,env) %>% filter(pvalue=="significant") %>% 
-                            summarize(count=length(region)) %>% 
+                            dplyr::summarize(count=length(region)) %>% 
                             spread(env,count)
 
 write.csv(trait.count,"Datafiles/SaltGWAS results/trait regioncount.csv")
 
 trait.count.suggestive <- colocate %>% group_by(trait,env) %>% filter(pvalue=="suggestive") %>% 
-  summarize(sug.count=length(region)) %>% 
+  dplyr::summarize(sug.count=length(region)) %>% 
   spread(env,sug.count)
 

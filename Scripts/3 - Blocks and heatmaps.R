@@ -63,7 +63,7 @@ sig.list$sigblock_hapID<-fct_inorder(sig.list$sigblock_hapID)
 
 
 #### flag haplotype blocks that have been split in the new blocking instead of combined fully
-split.blocks<-sig.list %>% group_by(hapID) %>% summarise(blocks=length(unique(sigblock_hapID))) %>% filter(blocks>1)
+split.blocks<-sig.list %>% group_by(hapID) %>% dplyr::summarise(blocks=length(unique(sigblock_hapID))) %>% filter(blocks>1)
 
       ### keep full genome haplotype block when the block isn't fully merged with another
       sig.list$sigblock_hapID<-as.character(sig.list$sigblock_hapID)
@@ -156,7 +156,7 @@ sig.hap<-data.frame(xs2,ys2,group)
 
 sig.hap$colocate.region<-rep(chrom.blocks$colocate.region,each=4)
 
-test<-sig.hap %>% group_by(colocate.region) %>% summarize (x=mean(xs2),y=mean(ys2))
+test<-sig.hap %>% group_by(colocate.region) %>% dplyr::summarize (x=mean(xs2),y=mean(ys2))
 
 hap.plot<-plot+geom_polygon(data=big.hap,aes(x=xs,y=ys,group=group),fill=rep(chrom.blocks$big.hap.colors,each=4))+
       geom_polygon(data=sig.hap,aes(x=xs2,y=ys2,group=group),fill=rep(chrom.blocks$sig.hap.colors,each=4))+
