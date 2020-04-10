@@ -14,12 +14,18 @@ prefs<-read.table("Scripts/### Preferences ###",header=F,sep="=",skip=1)
 pheno.data<-read.csv(paste("data/",pheno.name,sep=""))
 
 ##### data in the colocate plot
-
 traits<-unique(plot.data$trait)
-traits.env<-paste(traits,"_",envs[q],sep="")
+attempt <- try(expr = 
+      {
+        traits.env<-paste(traits,"_",envs[q],sep="")
+        correlate.data<-pheno.data[,match(traits.env,names(pheno.data))]
+      },silent=TRUE)
+if(inherits(x = attempt,what = "try-error"))
+{
+  traits.env<-paste(traits,"_",envs[q],sep="")
+  correlate.data<-pheno.data[,grep(traits.env,names(pheno.data))]
+}
 
-
-correlate.data<-pheno.data[,match(traits.env,names(pheno.data))]
 
 names(correlate.data)<-traits
 
