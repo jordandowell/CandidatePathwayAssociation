@@ -17,7 +17,16 @@ envs<-as.character(read.table("environments_to_run.txt")[,1])
 traits<-as.character(read.table("traits_to_run.txt")[,1])
 
 pheno.data<-fread(paste("data/",pheno.name,sep=""))
-
+dir.create("Plots/")
+dir.create("Plots/Colocalization/")
+dir.create("Plots/Manhattans/")
+dir.create("Plots/Manhattans_regionhighlight/")
+dir.create("Plots/Manhattans/single_env/")
+dir.create("Plots/Manhattans_regionhighlight/single_env/")
+dir.create("Tables/")
+dir.create(("Tables/Assoc_files/"))
+dir.create(("Tables/Blocks/"))
+dir.create(("Tables/Genes/"))
 
 setwd("Software")
 for (i in 1:length(envs)){
