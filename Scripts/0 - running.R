@@ -3,7 +3,7 @@
 trait_filename <- "katie_data.csv"
 pvalue_cutoff <- 1 # 1 = Bonferroni = 1; 2 = "suggested" 0.001 threshold
 
-lapply(c("data.table", "qqman", "tidyverse", "RColorBrewer", "ggpubr", "grid", "ggrepel", "gridExtra", "cowplot", "wesanderson", "corrr", "dplyr", "Hmisc", "ggdendro", "urltools", "scales")[zzz],X,character.only=TRUE)
+lapply(c("data.table", "qqman", "tidyverse", "RColorBrewer", "ggpubr", "grid", "ggrepel", "gridExtra", "cowplot", "wesanderson", "corrr", "dplyr", "Hmisc", "ggdendro", "urltools", "scales")[zzz],library,character.only=TRUE)
 
 ### END SECTION 1 ###
 
