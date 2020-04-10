@@ -1,4 +1,4 @@
-# TO generate your own key, see
+# To generate your own key, see
 # https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh
 #
 # To generate a github key, enter:
