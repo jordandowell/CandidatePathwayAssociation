@@ -11,7 +11,7 @@ prefs<-read.table("Scripts/### Preferences ###",header=F,sep="=",skip=1)
   multcomp<-as.numeric(as.character(prefs[3,2]))
 
 
-pheno.data<-read.csv(paste("Phenotype data/",pheno.name,sep=""))
+pheno.data<-read.csv(paste("data/",pheno.name,sep=""))
 
 ##### data in the colocate plot
 

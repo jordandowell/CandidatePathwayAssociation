@@ -1,7 +1,7 @@
 # edit these lines as needed
 ### BEGIN SECTION 1 ###
 trait_filename <- "katie_data.csv"
-pvalue_cutoff <- 2 # 1 = Bonferroni = 1; 2 = "suggested" 0.001 threshold
+pvalue_cutoff <- 1 # 1 = Bonferroni = 1; 2 = "suggested" 0.001 threshold
 ### END SECTION 1 ###
 
 ##############################
