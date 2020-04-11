@@ -19,7 +19,7 @@
 6. Set the working directory to the root (top-level) directory of the pipeline. OR open the R project (Sunflower-GWAS-2.0.Rproj).
 7. Open the R script "Scripts/0 - running.R".
 8. If necessary, go to the bottom of script 0 and install required packages (APPENDIX 1).
-9. Edit the required information in SECTION 1, then run. (note: I have to set pvalue_cutoff <- 2 for the pipline to work, as of 4/9/2020).
+9. Edit the required information in SECTION 1, then run.
 10. Run (but do not edit) SECTION 2.
 11. Run the scripts in SECTION 3 one-by-one, checking for warnings and errors along the way. Troubleshoot as needed.
 12. Results will be found in Tables/ and Plots/.

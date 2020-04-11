@@ -1,10 +1,6 @@
 # edit these lines as needed
 ### BEGIN SECTION 1 ###
 trait_filename <- "katie_data.csv"
-pvalue_cutoff <- 1 # only change this for debugging; 1 = Bonferroni = 1; 2 = "suggested" 0.001 threshold
-
-lapply(c("data.table", "qqman", "tidyverse", "RColorBrewer", "ggpubr", "grid", "ggrepel", "gridExtra", "cowplot", "wesanderson", "corrr", "dplyr", "Hmisc", "ggdendro", "urltools", "scales"),library,character.only=TRUE)
-
 ### END SECTION 1 ###
 
 ##############################
@@ -13,6 +9,9 @@ lapply(c("data.table", "qqman", "tidyverse", "RColorBrewer", "ggpubr", "grid", "
 ##############################
 ##### BEGIN SECTION ##########
 ##############################
+pvalue_cutoff <- 1 # only change this for debugging; 1 = Bonferroni = 1; 2 = "suggested" 0.001 threshold
+lapply(c("data.table", "qqman", "tidyverse", "RColorBrewer", "ggpubr", "grid", "ggrepel", "gridExtra", "cowplot",
+         "wesanderson", "corrr", "dplyr", "Hmisc", "ggdendro", "urltools", "scales"),library,character.only=TRUE)
 source("Scripts/functions.R")
 process_data(trait_filename = trait_filename)
 set_threshold(method = pvalue_cutoff)
