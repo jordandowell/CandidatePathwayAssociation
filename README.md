@@ -5,7 +5,7 @@
 * Clone https://github.com/ericgoolsby/GWAS_pipeline.git from your Desktop GitHub client (or from command line).
 #### If just downloading the repository
 * Download the zipped repository here (https://github.com/ericgoolsby/GWAS_pipeline/archive/master.zip). 
-### Downloading required software
+#### Downloading required software
 * Download required software here (https://drive.google.com/open?id=1tQ7ve20fS53lFqpet_-mCxvGBsRZULrt) and unzip it to the Software/ directory. IMPORTANT: MAKE SURE ALL FILES (e.g. XRQv1_412_261_filtered.fam) ARE IN Software/ DIRECTORY (i.e., not in a subfolder).
 
 ## Mason/Goolsby Lab modified steps (assuming sunflower GWAS performed in a SINGLE environment)
@@ -25,6 +25,28 @@
 12. Results will be found in Tables/ and Plots/.
 13. IMPORTANT: The pipeline assumes you grew the plants up in "Wet" and "Dry" environments, and it also analyzes the logdiff of the two. The only valid results are labeled Wet. THE RESULTS FOR DRY AND LOGDIFF ARE MEANINGLESS (BASED ON SIMULATD PLACEHOLDER DATA).
 
+
+## To Do
+### Minor
+* Document brief summary/rationale with inputs and outputs for each Script.
+* Document code and any relevant citations for each script.
+* Make each script self-contained (so previous scripts don't need to be run in the same session first)
+* Better error messages
+* Script submission vs interactive mode (with menu and prompts)
+* Step-by-step instructions for each interface and operating system.
+* GitHub wiki.
+* GitHub Projects / taskboard.
+### Major
+* Explore simulation-based p-value thresholds.
+* Power analysis
+* Within-species error
+* Missing data
+* Function-valued traits
+* Multi-locus / epistatic interactions
+* Multivariate traits
+* Non-normal / nonlinear data
+
+# End Mason/Goolsby Lab Edits; (remainder is Sunflower-GWAS-2.0 content)
 
 # Sunflower-GWAS-2.0
 

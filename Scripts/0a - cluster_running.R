@@ -1,0 +1,101 @@
+args <- commandArgs()
+if(any(is.na(as.numeric(args)))) args <- numeric()
+# edit these lines as needed
+### BEGIN SECTION 1 ###
+trait_filename <- "katie_data.csv"
+pvalue_cutoff <- 1 # only change this for debugging; 1 = Bonferroni = 1; 2 = "suggested" 0.001 threshold
+
+lapply(c("data.table", "qqman", "tidyverse", "RColorBrewer", "ggpubr", "grid", "ggrepel", "gridExtra", "cowplot", "wesanderson", "corrr", "dplyr", "Hmisc", "ggdendro", "urltools", "scales"),library,character.only=TRUE)
+
+### END SECTION 1 ###
+
+##############################
+### RUN BUT DO NOT EDIT ######
+##### THIS SECTION ###########
+##############################
+##### BEGIN SECTION ##########
+##############################
+source("Scripts/functions.R")
+process_data(trait_filename = trait_filename)
+set_threshold(method = pvalue_cutoff)
+##############################
+####### END SECTION ##########
+##############################
+
+
+##############################
+### UNCOMMENT AND RUN ########
+##### EACH SCRIPT  ###########
+#### ONE AT A TIME ###########
+##############################
+if(any(args==1))
+{
+   cat("\nBeginning Script 1.\n")
+   system("rm Tables/Assoc_files/*")
+   source("Scripts/1 - Phenotype to GEMMA.R")
+   cat("\nCompleted Script 1.\n")
+}
+if(any(args==2))
+{
+   cat("\nBeginning Script 2.\n")
+   source("Scripts/2 - Make manhattan plots.R")
+   cat("\nCompleted Script 2.\n")
+   cat("\nBeginning Script 2b.\n")
+   source("Scripts/2b (optional) - Make single environment manhattan plots.R")
+   cat("\nCompleted Script 2b.\n")
+
+}
+if(any(args==3))
+{
+   cat("\nBeginning Script 3.\n")
+   source("Scripts/3 - Blocks and heatmaps.R")
+   cat("\nCompleted Script 3.\n")
+
+}
+if(any(args==4))
+{
+   cat("\nBeginning Script 4.\n")
+   source("Scripts/4 - Trait GWAS colocalization figure.R")
+   cat("\nCompleted Script 4.\n")
+   cat("\nBeginning Script 4c.\n")
+   source("Scripts/4c - (optional) Per chromosome - Trait GWAS colocalization figure.R")
+   cat("\nCompleted Script 4c.\n")
+
+}
+if(any(args==5))
+{
+   cat("\nBeginning Script 5.\n")
+   source("Scripts/5 - List genes in regions.R")
+   cat("\nCompleted Script 5.\n")
+
+}
+if(any(args==6))
+{
+   cat("\nBeginning Script 6.\n")
+   source("Scripts/6 - Manhattan with blocks.R")
+   cat("\nCompleted Script 6.\n")
+
+}
+if(any(args==7))
+{
+   cat("\nBeginning Script 7.\n")
+   source("Scripts/7 - Export PVE per trait to table.R")
+   cat("\nCompleted Script 7.\n")
+
+}
+if(any(args==8))
+{
+   cat("\nBeginning Script 8.\n")
+   source("Scripts/8 - Show blocks on haplotype map.R")
+   cat("\nCompleted Script 8.\n")
+}
+
+
+### BEGIN APPENDIX 1 ###
+if(FALSE) # change to TRUE to install all required packages
+{
+  install.packages(c("data.table", "qqman", "tidyverse", "RColorBrewer", "ggpubr", 
+                     "grid", "ggrepel", "gridExtra", "cowplot", "wesanderson", "corrr", 
+                     "Hmisc", "ggdendro", "urltools", "scales"))
+}
+### END APPENDIX 1 ###
