@@ -1,5 +1,4 @@
-args <- commandArgs()
-if(any(is.na(as.numeric(args)))) args <- numeric()
+args <- as.numeric(na.exclude(as.numeric(commandArgs())))
 # edit these lines as needed
 ### BEGIN SECTION 1 ###
 trait_filename <- "katie_data.csv"
