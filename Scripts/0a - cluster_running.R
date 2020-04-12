@@ -23,9 +23,7 @@ set_threshold(method = pvalue_cutoff)
 
 
 ##############################
-### UNCOMMENT AND RUN ########
-##### EACH SCRIPT  ###########
-#### ONE AT A TIME ###########
+### PIPELINE SCRIPTS 1-8 #####
 ##############################
 if(any(args==1))
 {
@@ -71,8 +69,14 @@ if(any(args==5))
 if(any(args==6))
 {
    cat("\nBeginning Script 6.\n")
-   source("Scripts/6 - Manhattan with blocks.R")
-   cat("\nCompleted Script 6.\n")
+   attempt <- try(source("Scripts/6 - Manhattan with blocks.R"))
+   if(inherits(x = attempt,what = "try-error"))
+   {
+      cat("Script 6 failed. X11 is a common error message if running on the cluster (note: this script currently requires an interactive R session.")
+   } else
+   {
+      cat("\nCompleted Script 6.\n")
+   }
 
 }
 if(any(args==7))
