@@ -28,6 +28,7 @@
 
 ## To Do
 ### Minor
+* Fix Script 6 PNG error when running from cluster
 * Document brief summary/rationale with inputs and outputs for each Script.
 * Document code and any relevant citations for each script.
 * Make each script self-contained (so previous scripts don't need to be run in the same session first)
