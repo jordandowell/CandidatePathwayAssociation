@@ -19,7 +19,7 @@ process_data <- function(trait_filename = "katie_data.csv")
   writeLines(text = colnames(dat)[-1],"traits_to_run.txt")
   writeLines(text = envs,"environments_to_run.txt")
   
-  new_names <- c("SAM",kronecker(X = colnames(dat)[-1],Y = envs,FUN = function(X,Y) paste(X,Y,sep="_")))
+  new_names <- c("SAM",kronecker(X = envs,Y = colnames(dat)[-1],FUN = function(Y,X) paste(X,Y,sep="_")))
   #dat <- cbind(dat,dat[,-1]*0 + rnorm(n = length(unlist(dat[,-1]))),dat[,-1]*0 + rnorm(n = length(unlist(dat[,-1]))))
   dat <- cbind(dat,dat[,-1],dat[,-1])
   colnames(dat) <- new_names
