@@ -16,14 +16,14 @@
 4. You should leave missing data blank (don't put NA).
 5. Make sure your data are numeric (common errors that break the pipeline: a space instead of a blank cell; putting N/A instead of a blank cell; a comma instead of a decimal place, etc).
 ### Running the pipeline:
-6. Set the working directory to the root (top-level) directory of the pipeline. OR open the R project (Sunflower-GWAS-2.0.Rproj).
+6. Open the RStudio project (Sunflower-GWAS-2.0.Rproj). Otherwise, set the working directory to the root (top-level) directory of the pipeline.
 7. Open the R script "Scripts/0 - running.R".
 8. If necessary, go to the bottom of script 0 and install required packages (APPENDIX 1).
 9. Edit the required information in SECTION 1, then run.
 10. Run (but do not edit) SECTION 2.
 11. Run the scripts in SECTION 3 one-by-one, checking for warnings and errors along the way. Troubleshoot as needed.
 12. Results will be found in Tables/ and Plots/.
-## IMPORTANT: The pipeline assumes you grew the plants up in "Wet" and "Dry" environments, and it also analyzes the logdiff of the two. The only valid results are labeled Dry. THE RESULTS FOR WET AND LOGDIFF ARE MEANINGLESS (BASED ON SIMULATD PLACEHOLDER DATA).
+## IMPORTANT: The pipeline (incorrectly) assumes you grew the plants up in "Wet" and "Dry" environments, and it also analyzes the logdiff of the two. The only valid results are labeled Dry. THE RESULTS FOR WET AND LOGDIFF ARE MEANINGLESS (BASED ON SIMULATD PLACEHOLDER DATA).
 
 
 ## To Do
