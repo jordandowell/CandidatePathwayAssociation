@@ -1,4 +1,4 @@
-process_data <- function(trait_filename = "katie_data.csv")
+process_data <- function(trait_filename = "katie_data.csv",...)
 {
   dat <- read.csv(paste("data/",trait_filename,sep=""),stringsAsFactors = FALSE)
   colnames(dat)[1] <- "SAM"
@@ -16,13 +16,33 @@ process_data <- function(trait_filename = "katie_data.csv")
   dat <- dat[match(x = lines,table = dat$SAM),]
   dat$SAM <- lines
   
-  writeLines(text = colnames(dat)[-1],"traits_to_run.txt")
+  extra <- list(...)
+  if(length(extra)>0)
+  {
+    extra$env_dat_to_merge <- read.csv(paste("data/",extra$env_dat_to_merge,sep=""),stringsAsFactors = FALSE)
+    
+    if(any(names(extra)=="env_dat_to_merge"))
+    {
+      traits <- c(traits,colnames(extra$env_dat_to_merge)[-1])
+    }
+  }
+  
+  writeLines(text = traits,"traits_to_run.txt")
   writeLines(text = envs,"environments_to_run.txt")
   
   new_names <- c("SAM",kronecker(X = envs,Y = colnames(dat)[-1],FUN = function(Y,X) paste(X,Y,sep="_")))
   dat <- cbind(dat,dat[,-1]*0 + rnorm(n = length(unlist(dat[,-1]))),dat[,-1]*0 + rnorm(n = length(unlist(dat[,-1]))))
   #dat <- cbind(dat,dat[,-1],dat[,-1])
   colnames(dat) <- new_names
+  
+  if(length(extra)>0)
+  {
+    if(any(names(extra)=="env_dat_to_merge"))
+    {
+      dat <- cbind(dat,extra$env_dat_to_merge[,-1])
+    }
+  }
+  
   
   write.csv(x = dat,file = paste("data/",gsub(pattern = ".csv",replacement = "",x = trait_filename),"_for_pipeline.csv",sep=""),row.names = FALSE)
   
