@@ -14,7 +14,7 @@
 2. The first column should have the SAM line number as either integers or in EXACTLY the following format: e.g. SAM002, SAM073, SAM241, etc.
 3. Remove all special characters in column (trait) names (but don't worry about underscores -- they will be automatically removed). The first character of a trait name should be a letter, the rest of the trait name should be letters and numbers ONLY.
 4. You should leave missing data blank (don't put NA).
-5. Make sure your data are numeric (common errors that break the pipelnie: a space instead of a blank cell; putting N/A instead of a blank cell; a comma instead of a decimal place, etc).
+5. Make sure your data are numeric (common errors that break the pipeline: a space instead of a blank cell; putting N/A instead of a blank cell; a comma instead of a decimal place, etc).
 ### Running the pipeline:
 6. Set the working directory to the root (top-level) directory of the pipeline. OR open the R project (Sunflower-GWAS-2.0.Rproj).
 7. Open the R script "Scripts/0 - running.R".
