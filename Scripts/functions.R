@@ -1,4 +1,4 @@
-process_data <- function(trait_filename = "katie_data.csv",...)
+process_data <- function(trait_filename = "katie_data.csv",env_dat_to_merge)
 {
   dat <- read.csv(paste("data/",trait_filename,sep=""),stringsAsFactors = FALSE)
   colnames(dat)[1] <- "SAM"
@@ -16,15 +16,10 @@ process_data <- function(trait_filename = "katie_data.csv",...)
   dat <- dat[match(x = lines,table = dat$SAM),]
   dat$SAM <- lines
   
-  extra <- list(...)
-  if(length(extra)>0)
+  if(!missing(env_dat_to_merge))
   {
-    extra$env_dat_to_merge <- read.csv(paste("data/",extra$env_dat_to_merge[[1]],sep=""),stringsAsFactors = FALSE)
-    
-    if(any(names(extra)=="env_dat_to_merge"))
-    {
-      traits <- c(traits,colnames(extra$env_dat_to_merge)[-1])
-    }
+    env_dat_to_merge <- read.csv(paste("data/",env_dat_to_merge,sep=""),stringsAsFactors = FALSE)
+    traits <- c(traits,colnames(env_dat_to_merge)[-1])
   }
   
   writeLines(text = traits,"traits_to_run.txt")
@@ -35,12 +30,9 @@ process_data <- function(trait_filename = "katie_data.csv",...)
   #dat <- cbind(dat,dat[,-1],dat[,-1])
   colnames(dat) <- new_names
   
-  if(length(extra)>0)
+  if(!missing(env_dat_to_merge))
   {
-    if(any(names(extra)=="env_dat_to_merge"))
-    {
-      dat <- cbind(dat,extra$env_dat_to_merge[,-1])
-    }
+    dat <- cbind(dat,env_dat_to_merge[,-1])
   }
   
   
