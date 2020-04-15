@@ -23,7 +23,7 @@
 10. Run (but do not edit) SECTION 2.
 11. Run the scripts in SECTION 3 one-by-one, checking for warnings and errors along the way. Troubleshoot as needed.
 12. Results will be found in Tables/ and Plots/.
-13. IMPORTANT: The pipeline assumes you grew the plants up in "Wet" and "Dry" environments, and it also analyzes the logdiff of the two. The only valid results are labeled Wet. THE RESULTS FOR DRY AND LOGDIFF ARE MEANINGLESS (BASED ON SIMULATD PLACEHOLDER DATA).
+## IMPORTANT: The pipeline assumes you grew the plants up in "Wet" and "Dry" environments, and it also analyzes the logdiff of the two. The only valid results are labeled Dry. THE RESULTS FOR WET AND LOGDIFF ARE MEANINGLESS (BASED ON SIMULATD PLACEHOLDER DATA).
 
 
 ## To Do
