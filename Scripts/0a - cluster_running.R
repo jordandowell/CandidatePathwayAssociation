@@ -15,7 +15,7 @@ lapply(c("data.table", "qqman", "tidyverse", "RColorBrewer", "ggpubr", "grid", "
 ##### BEGIN SECTION ##########
 ##############################
 source("Scripts/functions.R")
-process_data(trait_filename = trait_filename,env_data_to_merge = "drought_and_rishi.csv")
+process_data(trait_filename = trait_filename) #,env_data_to_merge = "drought_and_rishi.csv")
 set_threshold(method = pvalue_cutoff)
 ##############################
 ####### END SECTION ##########
