@@ -16,7 +16,7 @@
 4. You should leave missing data blank (don't put NA).
 5. Make sure your data are numeric (common errors that break the pipeline: a space instead of a blank cell; putting N/A instead of a blank cell; a comma instead of a decimal place, etc).
 ### Running the pipeline:
-6. Open the RStudio project (Sunflower-GWAS-2.0.Rproj). Otherwise, set the working directory to the root (top-level) directory of the pipeline.
+6. Open the RStudio project (Sunflower-GWAS-2.0.Rproj) Or, if you are unable to open the .Rproj file (an RStudio project), simply set the working directory to the root (top-level) directory of the pipeline using the setwd command in R.
 7. Open the R script "Scripts/0 - running.R".
 8. If necessary, go to the bottom of script 0 and install required packages (APPENDIX 1).
 9. Edit the required information in SECTION 1, then run.
