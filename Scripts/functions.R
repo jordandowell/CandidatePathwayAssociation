@@ -19,7 +19,7 @@ process_data <- function(trait_filename = "katie_data.csv",...)
   extra <- list(...)
   if(length(extra)>0)
   {
-    extra$env_dat_to_merge <- read.csv(paste("data/",extra$env_dat_to_merge,sep=""),stringsAsFactors = FALSE)
+    extra$env_dat_to_merge <- read.csv(paste("data/",extra$env_dat_to_merge[[1]],sep=""),stringsAsFactors = FALSE)
     
     if(any(names(extra)=="env_dat_to_merge"))
     {
