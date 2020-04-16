@@ -19,7 +19,7 @@ process_data <- function(trait_filename = "katie_data.csv",env_dat_to_merge)
   if(!missing(env_dat_to_merge))
   {
     env_dat_to_merge <- read.csv(paste("data/",env_dat_to_merge,sep=""),stringsAsFactors = FALSE)
-    traits <- c(traits,colnames(env_dat_to_merge)[-1])
+    traits <- c(traits,unique(sapply(strsplit(colnames(env_dat_to_merge)[-1],split = "_"),function(X) X[[1]][1])))
   }
   
   writeLines(text = traits,"traits_to_run.txt")
