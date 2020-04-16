@@ -43,7 +43,7 @@
 ### Major
 * Explore simulation-based p-value thresholds.
 * Power analysis
-* Within-line error
+* Handle variation or multiple replicates within lines
 * Missing data
 * Function-valued traits
 * Multi-locus / epistatic interactions
