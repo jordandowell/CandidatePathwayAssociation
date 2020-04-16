@@ -4,7 +4,13 @@ args <- as.numeric(na.exclude(as.numeric(commandArgs())))
 trait_filename <- "katie_data.csv"
 pvalue_cutoff <- 1 # only change this for debugging; 1 = Bonferroni = 1; 2 = "suggested" 0.001 threshold
 
-lapply(c("data.table", "qqman", "tidyverse", "RColorBrewer", "ggpubr", "grid", "ggrepel", "gridExtra", "cowplot", "wesanderson", "corrr", "dplyr", "Hmisc", "ggdendro", "urltools", "scales"),library,character.only=TRUE)
+
+requiredPackages <- c("data.table", "qqman", "tidyverse", "RColorBrewer", "ggpubr", "grid", "ggrepel", "gridExtra", "cowplot", "wesanderson", "corrr", "dplyr", "Hmisc", "ggdendro", "urltools", "scales")
+for(Packagesneeded in requiredPackages){
+   if(!require(Packagesneeded,character.only = TRUE)) install.packages(Packagesneeded)
+   library(Packagesneeded,character.only = TRUE)
+}
+#lapply(c("data.table", "qqman", "tidyverse", "RColorBrewer", "ggpubr", "grid", "ggrepel", "gridExtra", "cowplot", "wesanderson", "corrr", "dplyr", "Hmisc", "ggdendro", "urltools", "scales"),library,character.only=TRUE)
 
 ### END SECTION 1 ###
 
