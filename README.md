@@ -23,9 +23,9 @@
 4. Run (but do not edit) SECTION 2. Required packages should install and load automatically. However, this process often results in errors and manual troubleshooting. The best troubleshooting is restarting R and trying again. If that doesn't work after 2-3 attempts, Google the error message and associated package name(s).
 5. Run the scripts in SECTION 3 one-by-one, checking for warnings and errors along the way. Troubleshoot as needed.
 6. Results will be found in Tables/ and Plots/.
-7. *_IMPORTANT: The pipeline (incorrectly) assumes you grew the plants up in "Dry"  "Wet" and "logdiff" environments (where logdiff is supposed to be log(Wet)-log(Dry))._*
+7. *_IMPORTANT: The pipeline (incorrectly) assumes you grew the plants up in "Dry"  "Wet" and "logdiff" environments (where logdiff is supposed to be log(Wet)-log(Dry))._ The only valid results are labeled Dry. THE RESULTS FOR WET AND LOGDIFF ARE MEANINGLESS (BASED ON SIMULATED PLACEHOLDER DATA). I'll say it again below in big letters, to make sure you see it.*
 
-## The only valid results are labeled Dry. THE RESULTS FOR WET AND LOGDIFF ARE MEANINGLESS (BASED ON SIMULATED PLACEHOLDER DATA).
+## CRITICAL: The only valid results are labeled Dry. THE RESULTS FOR WET AND LOGDIFF ARE MEANINGLESS (BASED ON SIMULATED PLACEHOLDER DATA).
 
 ### Running the pipeline via batch scripts (coming soon):
 
