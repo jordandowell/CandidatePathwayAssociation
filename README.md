@@ -15,16 +15,17 @@
 3. Remove all special characters in column (trait) names (but don't worry about underscores -- they will be automatically removed). The first character of a trait name should be a letter, the rest of the trait name should be letters and numbers ONLY.
 4. You should leave missing data blank (don't put NA).
 5. Make sure your data are numeric (common errors that break the pipeline: a space instead of a blank cell; putting N/A instead of a blank cell; a comma instead of a decimal place, etc).
-### Running the pipeline:
-6. Open the RStudio project (Sunflower-GWAS-2.0.Rproj) Or, if you are unable to open the .Rproj file (an RStudio project), simply set the working directory to the root (top-level) directory of the pipeline using the setwd command in R.
-7. Open the R script "Scripts/0 - running.R".
-8. If necessary, go to the bottom of script 0 and install required packages (APPENDIX 1).
-9. Edit the required information in SECTION 1, then run.
-10. Run (but do not edit) SECTION 2.
-11. Run the scripts in SECTION 3 one-by-one, checking for warnings and errors along the way. Troubleshoot as needed.
-12. Results will be found in Tables/ and Plots/.
+
+### Running the pipeline (normal / interactive mode):
+1. Open the RStudio project (Sunflower-GWAS-2.0.Rproj) Or, if you are unable to open the .Rproj file (an RStudio project), simply set the working directory to the root (top-level) directory of the pipeline using the setwd command in R.
+2. Open the R script "Scripts/0 - running.R".
+3. Edit the required information in SECTION 1, then run.
+4. Run (but do not edit) SECTION 2. Required packages should install and load automatically. However, this process often results in errors and manual troubleshooting. The best troubleshooting is restarting R and trying again. If that doesn't work after 2-3 attempts, Google the error message and associated package name(s).
+5. Run the scripts in SECTION 3 one-by-one, checking for warnings and errors along the way. Troubleshoot as needed.
+6. Results will be found in Tables/ and Plots/.
 ## IMPORTANT: The pipeline (incorrectly) assumes you grew the plants up in "Wet" and "Dry" environments, and it also analyzes the logdiff of the two. The only valid results are labeled Dry. THE RESULTS FOR WET AND LOGDIFF ARE MEANINGLESS (BASED ON SIMULATD PLACEHOLDER DATA).
 
+### Running the pipeline via batch scripts (coming soon):
 
 ## To Do
 ### Minor
