@@ -16,11 +16,6 @@
 4. You should leave missing data blank (don't put NA).
 5. Make sure your data are numeric (common errors that break the pipeline: a space instead of a blank cell; putting N/A instead of a blank cell; a comma instead of a decimal place, etc).
 
-*_IMPORTANT: The pipeline (incorrectly) assumes you grew the plants up in "Dry"  "Wet" and "logdiff" environments (where logdiff is supposed to be log(Wet)-log(Dry))._*
-
-## The only valid results are labeled Dry. THE RESULTS FOR WET AND LOGDIFF ARE MEANINGLESS (BASED ON SIMULATED PLACEHOLDER DATA).
-
-
 ### Running the pipeline (normal / interactive mode):
 1. Open the RStudio project (Sunflower-GWAS-2.0.Rproj) Or, if you are unable to open the .Rproj file (an RStudio project), simply set the working directory to the root (top-level) directory of the pipeline using the setwd command in R.
 2. Open the R script "Scripts/0 - running.R".
