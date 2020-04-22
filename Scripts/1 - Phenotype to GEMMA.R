@@ -29,16 +29,16 @@ dir.create(("Tables/Blocks/"))
 dir.create(("Tables/Genes/"))
 
 setwd("Software")
-for (i in 1:length(envs)){
+#for (i in 1:length(envs)){
   
-  env<-envs[i]
+ # env<-envs[i]
   
   for (q in 1:length(traits)) {
     
     trait<-traits[q]
-    print(paste(trait,env,sep="_"))
+    print(paste(trait))
 
-select_cols = c("SAM", paste(trait,env,sep="_"))
+select_cols = c("SAM", paste(trait))
 
 if (!select_cols[2]%in%names(pheno.data)) { 
   print("phenotype missing")
@@ -52,9 +52,9 @@ fam.file <- merge(fam.file,trait.data,by.x="V1",by.y="SAM",all.x=T)
 write.table(file=paste(SNPset,".fam",sep=""),fam.file,col.names=F, row.names=F, quote =F)
 
 
-system(paste("./gemma -bfile ",SNPset," -k ",SNPset,".cXX.txt -c ",SNPset,".PCA_EV -lmm 1 -outdir ../Tables/Assoc_files/ -o " ,paste(trait,env,sep="_"),sep=""))
+system(paste("./gemma -bfile ",SNPset," -k ",SNPset,".cXX.txt -c ",SNPset,".PCA_EV -lmm 1 -outdir ../Tables/Assoc_files/ -o " ,paste(trait),sep=""))
 
   }
-}
+#}
 
 setwd("..")

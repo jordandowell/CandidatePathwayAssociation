@@ -46,7 +46,7 @@ colocate<- colocate %>% group_by(chromosome) %>% mutate(region_col=colours[as.nu
 
 ###setup the data
 
-  envs<-as.character(read.table("environments_to_run.txt")[,1])
+  envs<-as.character(read.table("environments_to_run.txt")[1,1])
   traits<-as.character(read.table("traits_to_run.txt")[,1])
   
   suggthresh<-0.001 ## draw line at "suggestive" SNPs (threshold fraction of snips are above the blue line)
@@ -65,7 +65,7 @@ for (i in 1:length(traits)){
     } ### deal with missing association file
     
     # pdf(paste("Plots/Manhattans/single_env/",traits[i],"-",envs[q],"_ManhattanPlot.pdf",sep=""),height=5.5,width=7.5)
-    label<-paste(traits[i],envs[q])
+    label<-paste(traits[i])
     print(label)
     snips<-fread(paste("Tables/Assoc_files/",paste(traits[i],envs[q],sep="_"),".assoc.txt",sep=""),header=T)
     snips$CHR<- as.integer(gsub("Ha412HOChr","",snips$chr))
@@ -132,6 +132,8 @@ for (i in 1:length(traits)){
     assign(envs[q],plot)
   }
   
-  comb.plot<-plot_grid(Wet,logdiff,Dry,align="h",nrow=2)
+  comb.plot<-plot_grid(Dry,align="h",nrow=2)
   ggsave(paste("Plots/Manhattans_regionhighlight/Manhattan-region-",traits[i],".png",sep=""),plot=comb.plot,height=9,width=15, units="in",dpi=300)
 }
+
+  

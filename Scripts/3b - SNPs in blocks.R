@@ -46,9 +46,14 @@ sig.blocks<-NULL #empty object to merge against
 sug.blocks<-NULL
 sig.snips.save<-NULL
 
+
+i<- 1
+q<- 1
+
+
 for (i in 1:length(traits)){
   
-  for(q in 1:length(envs)) {
+ # for(q in 1:length(envs)) {
 
     print(paste(traits[i],envs[q]))
     
@@ -116,7 +121,7 @@ for (i in 1:length(traits)){
     
    
   }
-}
+#}
 
 sig.snips<-unique(sig.snips.save,by="rs")[,1:3]
 

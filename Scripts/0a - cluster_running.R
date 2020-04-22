@@ -1,7 +1,7 @@
 args <- as.numeric(na.exclude(as.numeric(commandArgs())))
 # edit these lines as needed
 ### BEGIN SECTION 1 ###
-trait_filename <- "katie_data.csv"
+trait_filename <- "SAMHPLCRetentiontimes200PlotPeakAreas.csv"
 
 
 #lapply(c("data.table", "qqman", "tidyverse", "RColorBrewer", "ggpubr", "grid", "ggrepel", "gridExtra", "cowplot", "wesanderson", "corrr", "dplyr", "Hmisc", "ggdendro", "urltools", "scales"),library,character.only=TRUE)

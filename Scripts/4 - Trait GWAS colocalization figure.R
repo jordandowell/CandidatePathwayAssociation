@@ -12,7 +12,7 @@ prefs<-read.table("Scripts/### Preferences ###",header=F,sep="=",skip=1)
 ##########
 colors<-c("#1b9e77", "gray85") 
 
-envs<-as.character(read.table("environments_to_run.txt")[,1])
+envs<-as.character(read.table("environments_to_run.txt")[1,1])
 
 sig.blocks<-read.table("Tables/Blocks/traits_to_genomeblocks_signif.txt", header=T)
 sug.blocks<-read.table("Tables/Blocks/traits_to_genomeblocks_sugest.txt", header=T)
