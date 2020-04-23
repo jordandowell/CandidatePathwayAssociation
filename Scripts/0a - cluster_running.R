@@ -102,7 +102,12 @@ if(any(args==8))
    source("Scripts/8 - Show blocks on haplotype map.R")
    cat("\nCompleted Script 8.\n")
 }
-
+if(any(args==9))
+{
+   cat("\nBeginning Script 9.\n")
+   source("Scripts/9 - Haplotype blocks with associated traits GWAS output table.R")
+   cat("\nCompleted Script 9.\n")
+}
 
 ### BEGIN APPENDIX 1 ###
 if(FALSE) # change to TRUE to install all required packages
