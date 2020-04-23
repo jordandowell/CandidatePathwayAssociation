@@ -19,8 +19,9 @@ multcomp <- as.numeric(as.character(prefs[3, 2]))
 
 ###setup the data
 
-envs <- as.character(read.table("environments_to_run.txt")[, 1])
-traits <- as.character(read.table("traits_to_run.txt")[, 1])
+envs <- as.character(read.table("environments_to_run.txt")[1, 1])
+traits<- as.character(unlist(as.list(read.csv(paste0("data/",trait_filename) , nrows=1, header = F)[-1])))
+
 
 
 suggthresh <-

@@ -47,7 +47,7 @@ colocate<- colocate %>% group_by(chromosome) %>% mutate(region_col=colours[as.nu
 ###setup the data
 
   envs<-as.character(read.table("environments_to_run.txt")[1,1])
-  traits<-as.character(read.table("traits_to_run.txt")[,1])
+  traits<- as.character(unlist(as.list(read.csv(paste0("data/",trait_filename) , nrows=1, header = F)[-1])))
   
   suggthresh<-0.001 ## draw line at "suggestive" SNPs (threshold fraction of snips are above the blue line)
 

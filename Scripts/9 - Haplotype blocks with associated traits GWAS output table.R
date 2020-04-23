@@ -44,7 +44,7 @@ colocate.count$region<-sub("-","_",colocate.count$region) # otherwise excel will
 
 genelist<-merge(genelist,colocate.count,by.x="colocate.block",by.y="region")
 
-write.csv(genelist,"Tables/Genes/genelist extended.csv",row.names=F)
+write.csv(genelist,"Tables/Genes/genelist-extended.csv",row.names=F)
 
 
 write.excel(colocate.count)
@@ -53,7 +53,7 @@ trait.count <- colocate %>% group_by(trait,env) %>% filter(pvalue=="significant"
                             dplyr::summarize(count=length(region)) %>% 
                             spread(env,count)
 
-write.csv(trait.count,"Tables/Genes/trait regioncount.csv")
+write.csv(trait.count,"Tables/Genes/trait-regioncount.csv")
 
 trait.count.suggestive <- colocate %>% group_by(trait,env) %>% filter(pvalue=="suggestive") %>% 
   dplyr::summarize(sug.count=length(region)) %>% 

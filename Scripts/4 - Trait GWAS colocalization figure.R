@@ -62,7 +62,7 @@ chrom.borders<-chrom.borders[1:length(chrom.borders)-1]
 colocate<-colocate[!duplicated(paste(colocate$region,colocate$trait_env)),]
 
 
-for (i in 1: length(envs)) {
+for (i in 1:length(envs)) {
   q<-i
 
 plot.data<-as.data.frame(colocate[colocate$env==envs[i],])
