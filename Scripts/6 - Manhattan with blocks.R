@@ -46,7 +46,7 @@ colocate<- colocate %>% group_by(chromosome) %>% mutate(region_col=colours[as.nu
 
 ###setup the data
 
-  envs<-as.character(read.table("environments_to_run.txt")[1,1])
+  envs<-as.character(read.table("environments_to_run.txt")[,1])
   traits<- as.character(unlist(as.list(read.csv(paste0("data/",trait_filename) , nrows=1, header = F)[-1])))
   
   suggthresh<-0.001 ## draw line at "suggestive" SNPs (threshold fraction of snips are above the blue line)
@@ -135,15 +135,16 @@ for (i in 1:length(traits)){
     
     assign(envs[q],plot)
   }
-  
-  comb.plot<-plot_grid(Dry,align="h",nrow=2)
+  if(length(envs) > 1){
+  #this should be fixed if there are more than 3 environments
+    comb.plot<-plot_grid(envs[1],envs[2],envs[3],align="h",nrow=2)
   
   #ggsave(paste("Plots/Manhattans_regionhighlight/Manhattan-region-",traits[i],".png",sep=""),plot=comb.plot,height=9,width=15, units="in",dpi=300)
   png(paste("Plots/Manhattans_regionhighlight/Manhattan-region-",traits[i],".png",sep=""),height=4.5,width=7.5,units="in", res=300)
   comb.plot
   dev.off()
   
-  
+  }
   }
 
   

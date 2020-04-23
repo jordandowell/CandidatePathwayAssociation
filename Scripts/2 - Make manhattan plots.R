@@ -12,7 +12,7 @@ prefs<-read.table("Scripts/### Preferences ###",header=F,sep="=",skip=1)
 
 ###setup the data
 
-envs<-as.character(read.table("environments_to_run.txt")[1,1])
+envs<-as.character(read.table("environments_to_run.txt")[,1])
 traits<- as.character(unlist(as.list(read.csv(paste0("data/",trait_filename) , nrows=1, header = F)[-1])))
 
 
@@ -63,7 +63,7 @@ for (i in 1:length(traits)){
       }
     mtext(label, outer = TRUE, cex = 1)
     dev.off()
-      # }
+       }
 
-}
+
 

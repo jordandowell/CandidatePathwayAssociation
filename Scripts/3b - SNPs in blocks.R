@@ -37,7 +37,7 @@ big.list<-rbind(big.list,missing.snps)
 thresh<-0.05/(multcomp)
 suggthresh<-0.001
 
-envs<-as.character(read.table("environments_to_run.txt")[1,1])
+envs<-as.character(read.table("environments_to_run.txt")[,1])
 traits<- as.character(unlist(as.list(read.csv(paste0("data/",trait_filename) , nrows=1, header = F)[-1])))
 pheno.data<-read.csv(paste("data/",pheno.name,sep=""))
 
@@ -53,7 +53,7 @@ q<- 1
 
 for (i in 1:length(traits)){
   
- # for(q in 1:length(envs)) {
+  for(q in 1:length(envs)) {
 
     print(paste(traits[i],envs[q]))
     
@@ -121,7 +121,7 @@ for (i in 1:length(traits)){
     
    
   }
-#}
+}
 
 sig.snips<-unique(sig.snips.save,by="rs")[,1:3]
 
