@@ -127,13 +127,23 @@ for (i in 1:length(traits)){
       geom_hline(yintercept=tmpcutoff,col="blue")+
       ggtitle(label)
     
-    ggsave(paste("Plots/Manhattans_regionhighlight/single_env/",traits[i],"_",envs[q],".png",sep=""),plot, height=4.5,width=7.5, units="in",dpi=300)
+   # ggsave(paste("Plots/Manhattans_regionhighlight/single_env/",traits[i],"_",envs[q],".png",sep=""),plot, height=4.5,width=7.5, units="in",dpi=300)
   
+    png(paste("Plots/Manhattans_regionhighlight/single_env/",traits[i],"_",envs[q],".png",sep=""),height=4.5,width=7.5,units="in", res=300)
+    plot
+    dev.off()
+    
     assign(envs[q],plot)
   }
   
   comb.plot<-plot_grid(Dry,align="h",nrow=2)
-  ggsave(paste("Plots/Manhattans_regionhighlight/Manhattan-region-",traits[i],".png",sep=""),plot=comb.plot,height=9,width=15, units="in",dpi=300)
-}
+  
+  #ggsave(paste("Plots/Manhattans_regionhighlight/Manhattan-region-",traits[i],".png",sep=""),plot=comb.plot,height=9,width=15, units="in",dpi=300)
+  png(paste("Plots/Manhattans_regionhighlight/Manhattan-region-",traits[i],".png",sep=""),height=4.5,width=7.5,units="in", res=300)
+  comb.plot
+  dev.off()
+  
+  
+  }
 
   
