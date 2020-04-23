@@ -13,9 +13,11 @@ prefs<-read.table("Scripts/### Preferences ###",header=F,sep="=",skip=1)
 
 
 ## Read in traits and environments to run
-envs<-as.character(read.table("environments_to_run.txt")[,1])
-traits<-as.character(read.table("traits_to_run.txt")[,1])
+traits<- as.character(unlist(as.list(read.csv(paste0("Data/",trait_filename) , nrows=1, header = F)[-1])))
 
+envs<-as.character(read.table("environments_to_run.txt")[1,1])
+
+#create directories as necessary
 pheno.data<-fread(paste("data/",pheno.name,sep=""))
 dir.create("Plots/")
 dir.create("Plots/Colocalization/")
@@ -29,6 +31,9 @@ dir.create(("Tables/Blocks/"))
 dir.create(("Tables/Genes/"))
 
 setwd("Software")
+
+
+#uncomment for loop if you have comparison of environment
 #for (i in 1:length(envs)){
   
  # env<-envs[i]
