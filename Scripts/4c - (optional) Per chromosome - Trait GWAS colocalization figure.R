@@ -109,7 +109,11 @@ for (i in 1: length(unique(colocate$chromosome))) {
   dendro.plot<-plot_grid(Dry_dendro,align="v",nrow=1,rel_heights=trait.count+2.5)
   
   chrom.plot<-plot_grid(dendro.plot,trait.plot,ncol=2,rel_widths = c(3,region.count),align="v")
-  ggsave(paste("Plots/Colocalization/colocate-chromosome-",unique(colocate$chromosome)[i],".pdf",sep=""),plot=chrom.plot,width=6,height=16)
+ # ggsave(paste("Plots/Colocalization/colocate-chromosome-",unique(colocate$chromosome)[i],".pdf",sep=""),plot=chrom.plot,width=6,height=16)
+  pdf(paste("Plots/Colocalization/colocate-chromosome-",unique(colocate$chromosome)[i],".pdf",sep=""),width=6,height=16)
+  chrom.plot
+  dev.off()
+  
   
 }
 

@@ -99,7 +99,11 @@ comb.plot<-plot_grid(Env.dendro+theme(plot.margin = unit(c(0, 0, 0, 0), "cm")),
 
 trait.to.region.ratio<-length(levels(plot.data$region))/length(Env.label.order)
 
-ggsave(paste("Plots/Colocalization/colocate-",envs[i],".pdf",sep=""),plot=comb.plot,width=22,height=6)
+#ggsave(paste("Plots/Colocalization/colocate-",envs[i],".pdf",sep=""),plot=comb.plot,width=22,height=6)
+pdf(paste("Plots/Colocalization/colocate-",envs[i],".png",sep=""),width=22,height=6)
+comb.plot
+dev.off()
+
 
 }
 
