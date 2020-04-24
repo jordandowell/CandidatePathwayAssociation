@@ -28,7 +28,7 @@
 
 ### Running the pipeline (normal / interactive mode):
 1. Open the RStudio project (Sunflower-GWAS-2.0.Rproj) Or, if you are unable to open the .Rproj file (an RStudio project), simply set the working directory to the root (top-level) directory of the pipeline using the setwd command in R.
-2. Open the R script "Scripts/0 - running.R".(0a will allow for running on the cluster assuming a single datafile and a single environment,0c will assume multiple data sets and look for matching Environment2 datasets)
+2. Open the R script "Scripts/0 - running.R".(0a will allow for running on the cluster assuming a single datafile and a single environment,0c will assume multiple data sets and look for matching Environment2 datasets, Oc Requires no editing however it will run every file located in the data folder)
 3. Edit the required information in SECTION 1, then run.(Oc requires no editing and works end to end, However it will run all files in the data folder)
 4. Run (but do not edit) SECTION 2. Required packages should install and load automatically. However, this process often results in errors and manual troubleshooting. The best troubleshooting is restarting R and trying again. If that doesn't work after 2-3 attempts, Google the error message and associated package name(s).
 5. Run the scripts in SECTION 3 one-by-one, checking for warnings and errors along the way. Troubleshoot as needed.
