@@ -13,11 +13,11 @@ prefs<-read.table("Scripts/### Preferences ###",header=F,sep="=",skip=1)
 
 
 ## Read in traits and environments to run
-traits<- as.character(unlist(as.list(read.csv(paste0("data/",trait_filename) , nrows=1, header = F)[-1])))
+traits<- as.character(read.table("traits_to_run.txt")[,1])
 
 envs<-as.character(read.table("environments_to_run.txt")[,1])
 
-envs
+
 #create directories as necessary
 pheno.data<-fread(paste("data/",pheno.name,sep=""))
 dir.create("Plots/")
@@ -42,15 +42,22 @@ for (i in 1:length(envs)){
   for (q in 1:length(traits)) {
     
     trait<-traits[q]
-    print(paste(trait))
+    print(paste(trait,env))
 
-select_cols = c("SAM", paste(trait))
+#select_cols = c("SAM", paste(trait))
+select_cols = c("SAM", paste(trait,env,sep="_"))
+
+
+
 
 if (!select_cols[2]%in%names(pheno.data)) { 
   print("phenotype missing")
   next } #if the phenotype does not exist go to the next one
 
-trait.data<-pheno.data[, ..select_cols]
+trait.data<-pheno.data[,select_cols, with=FALSE]
+
+
+
 
 fam.file<-fread(paste(SNPset,".fam",sep=""))
 fam.file$V6<-NULL
@@ -58,7 +65,7 @@ fam.file <- merge(fam.file,trait.data,by.x="V1",by.y="SAM",all.x=T)
 write.table(file=paste(SNPset,".fam",sep=""),fam.file,col.names=F, row.names=F, quote =F)
 
 
-system(paste("./gemma -bfile ",SNPset," -k ",SNPset,".cXX.txt -c ",SNPset,".PCA_EV -lmm 1 -outdir ../Tables/Assoc_files/ -o " ,paste(trait),sep=""))
+system(paste("./gemma -bfile ",SNPset," -k ",SNPset,".cXX.txt -c ",SNPset,".PCA_EV -lmm 1 -outdir ../Tables/Assoc_files/ -o " ,paste(trait,env,sep="_"),sep=""))
 
   }
 }

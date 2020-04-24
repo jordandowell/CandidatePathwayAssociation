@@ -25,7 +25,7 @@ source("Scripts/functions.R")
 process_data(trait_filename = trait_filename) #,env_dat_to_merge = "drought_and_rishi.csv")
 set_threshold(method = pvalue_cutoff)
 ##############################
-####### END SECTION ##########
+####### END SECTItrait.data<-pheno.data[, select_cols]N ##########
 ##############################
 
 

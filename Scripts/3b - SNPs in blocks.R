@@ -55,7 +55,7 @@ for (i in 1:length(traits)){
   
   for(q in 1:length(envs)) {
 
-    print(paste(traits[i],envs[q]))
+    print(paste(traits[i],envs[q],sep="_"))
     
     if (!paste(traits[i],"_",envs[q],".assoc.txt",sep="")%in%dir("Tables/Assoc_files/")) {
       print("Phenotype does not exist or not run through gemma")
