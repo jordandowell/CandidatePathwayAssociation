@@ -78,7 +78,7 @@ for (i in 1:length(traits)) {
   tmpcutoff <-
     as.data.frame(quantile(ps1$p_wald, as.numeric(as.character(suggthresh))))[1, 1]
   
-  label <- paste(traits[i], env[q], sep = "_")
+  label <- paste(traits[i], envs[q], sep = "_")
   print(label)
   
   if (length(ps1[ps1$p_wald < 0.1, ]$p_wald) < 1) {

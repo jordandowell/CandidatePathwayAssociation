@@ -114,7 +114,7 @@ for (i in 1:length(traits)){
     plot<-ggplot(data=snips, aes(x=BPcum, y=-log10(p_wald),color=as.factor(CHR)))+
       geom_point(size=0.4)+scale_color_manual(values=rep(c("grey75",brewer.pal("Blues",n=9)[3]),17))+
       annotate("point",x=highlights$BPcum,y=-log10(highlights$p_wald),col=highlights$region_col,size=0.6)+
-      scale_x_continuous( label = axisdf$CHR, breaks= axisdf$center, expand = expand_scale(mult = c(0.02, 0.02))) +
+      scale_x_continuous( labels = axisdf$CHR, breaks= axisdf$center, expand = expansion(mult = c(0.02, 0.02))) +
       scale_y_continuous(expand = c(0, 0), limits=c(1,ytop), breaks=seq(from=2, to=ytop,by=2) )+
       theme_light() +
       theme( 
@@ -129,22 +129,27 @@ for (i in 1:length(traits)){
     
    # ggsave(paste("Plots/Manhattans_regionhighlight/single_env/",traits[i],"_",envs[q],".png",sep=""),plot, height=4.5,width=7.5, units="in",dpi=300)
   
-    pdf(paste("Plots/Manhattans_regionhighlight/single_env/",traits[i],"_",envs[q],".pdf",sep=""),height=4.5,width=7.5)
-    plot
+    #png(paste("Plots/Manhattans_regionhighlight/single_env/",traits[i],"_",envs[q],".png",sep=""),height=4.5,width=7.5, units = "in",res = 300)
+   pdf(paste("Plots/Manhattans_regionhighlight/single_env/",traits[i],"_",envs[q],".pdf",sep=""),height=4.5,width=7.5)
+     print(plot)
     dev.off()
     
     assign(envs[q],plot)
   }
   if(length(envs) > 1){
   #this should be fixed if there are more than 3 environments
-    comb.plot<-plot_grid(envs[1],envs[2],envs[3],align="h",nrow=2)
+    comb.plot.list<-mget(paste(envs[1:length(envs)]))
+    
+    comb.plot<-plot_grid(plotlist = comb.plot.list,align="h",nrow=2)
   
   #ggsave(paste("Plots/Manhattans_regionhighlight/Manhattan-region-",traits[i],".png",sep=""),plot=comb.plot,height=9,width=15, units="in",dpi=300)
-  pdf(paste("Plots/Manhattans_regionhighlight/Manhattan-region-",traits[i],".pdf",sep=""),height=4.5,width=7.5)
-  comb.plot
+  pdf(paste("Plots/Manhattans_regionhighlight/Manhattan-region-",traits[i],".png",sep=""),height=4.5,width=7.5)
+  print(comb.plot)
   dev.off()
   
   }
-  }
+}
+  
+  
 
   

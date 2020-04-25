@@ -13,10 +13,15 @@ prefs<-read.table("Scripts/### Preferences ###",header=F,sep="=",skip=1)
   pheno.name<-as.character(prefs[1,2])
   multcomp<-as.numeric(as.character(prefs[3,2]))
 
+  
+  
 ####
 colors<-c("#1b9e77", "gray85") 
 
 envs<-as.character(read.table("environments_to_run.txt")[,1])
+
+
+
 
 sig.blocks<-read.table("Tables/Blocks/traits_to_genomeblocks_signif.txt", header=T)
 sug.blocks<-read.table("Tables/Blocks/traits_to_genomeblocks_sugest.txt", header=T)
@@ -99,25 +104,32 @@ for (i in 1: length(unique(colocate$chromosome))) {
     
     Env.dendro<-Env.dendro+theme(axis.text.x = element_text(angle = 90, vjust = 0.5,hjust=1,size=8))+ggtitle(" ")+theme(plot.margin = unit(c(0.2, 0, 0, 0), "cm"))
     
-    assign(envs[q],plot.colocate)
+    
+    
+    assign(paste(envs[q]),plot.colocate)
     assign(paste(envs[q],"_dendro",sep=""),Env.dendro)
+    
+    
     trait.count[q]<-length(Env.label.order)
   }
   
   trait.count<-c(seq(from=1,to=length(trait.count),1))
   
-  trait.plot.list<- envs[1:length(envs)]
+  #trait.plot.list<- as.list(paste(envs[1:length(envs)],"firstplot",sep=""))
+  trait.plot.list <-mget(paste(envs[1:length(envs)]))
   
   trait.plot<-plot_grid(plotlist = trait.plot.list,align="v",nrow=1,rel_heights=trait.count+2.5)
   
-  dendro.plot.list<- paste(envs[1:length(envs)],"_dendro",sep="")
+  #dendro.plot.list<- as.list(paste(envs[1:length(envs)],"_dendro",sep=""))
   
-  dendro.plot<-plot_grid(plotlist = dendro.plot.list,align="v",nrow=1,rel_heights=trait.count+2.5)
+  dendro.plot.list<-mget(paste(envs[1:length(envs)],"_dendro",sep=""))
+  
+  dendro.plot<-plot_grid(plotlist = dendro.plot.list[1:length(trait.plot.list)],align="v",nrow=1,rel_heights=trait.count+2.5)
   
   chrom.plot<-plot_grid(dendro.plot,trait.plot,ncol=2,rel_widths = c(3,region.count),align="v")
  # ggsave(paste("Plots/Colocalization/colocate-chromosome-",unique(colocate$chromosome)[i],".pdf",sep=""),plot=chrom.plot,width=6,height=16)
   pdf(paste("Plots/Colocalization/colocate-chromosome-",unique(colocate$chromosome)[i],".pdf",sep=""),width=6,height=16)
-  chrom.plot
+  print(chrom.plot)
   dev.off()
   
   
