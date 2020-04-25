@@ -1,6 +1,6 @@
 ##### wrangling of the GWAS summary output files
 library(tidyverse)
-source("functions.r")
+#source("functions.r")
 
 
 

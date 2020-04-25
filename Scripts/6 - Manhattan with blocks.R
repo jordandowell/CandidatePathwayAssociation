@@ -129,7 +129,7 @@ for (i in 1:length(traits)){
     
    # ggsave(paste("Plots/Manhattans_regionhighlight/single_env/",traits[i],"_",envs[q],".png",sep=""),plot, height=4.5,width=7.5, units="in",dpi=300)
   
-    png(paste("Plots/Manhattans_regionhighlight/single_env/",traits[i],"_",envs[q],".png",sep=""),height=4.5,width=7.5,units="in", res=300)
+    pdf(paste("Plots/Manhattans_regionhighlight/single_env/",traits[i],"_",envs[q],".pdf",sep=""),height=4.5,width=7.5)
     plot
     dev.off()
     
@@ -140,7 +140,7 @@ for (i in 1:length(traits)){
     comb.plot<-plot_grid(envs[1],envs[2],envs[3],align="h",nrow=2)
   
   #ggsave(paste("Plots/Manhattans_regionhighlight/Manhattan-region-",traits[i],".png",sep=""),plot=comb.plot,height=9,width=15, units="in",dpi=300)
-  png(paste("Plots/Manhattans_regionhighlight/Manhattan-region-",traits[i],".png",sep=""),height=4.5,width=7.5,units="in", res=300)
+  pdf(paste("Plots/Manhattans_regionhighlight/Manhattan-region-",traits[i],".pdf",sep=""),height=4.5,width=7.5)
   comb.plot
   dev.off()
   

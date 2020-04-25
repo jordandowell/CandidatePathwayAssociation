@@ -65,7 +65,7 @@ for (i in 1: length(unique(colocate$chromosome))) {
   
   region.count<-length(levels(chrom.data$region))
   
-  trait.count<-c(NA)
+  trait.count<-rep(NA,length(envs))
   
   for (q in 1:length(envs)) {
     plot.data<-chrom.data[chrom.data$env==envs[q],]
@@ -104,9 +104,15 @@ for (i in 1: length(unique(colocate$chromosome))) {
     trait.count[q]<-length(Env.label.order)
   }
   
-  trait.count<-trait.count[c(1)]
-  trait.plot<-plot_grid(Dry,align="v",nrow=1,rel_heights=trait.count+2.5)
-  dendro.plot<-plot_grid(Dry_dendro,align="v",nrow=1,rel_heights=trait.count+2.5)
+  trait.count<-c(seq(from=1,to=length(trait.count),1))
+  
+  trait.plot.list<- envs[1:length(envs)]
+  
+  trait.plot<-plot_grid(plotlist = trait.plot.list,align="v",nrow=1,rel_heights=trait.count+2.5)
+  
+  dendro.plot.list<- paste(envs[1:length(envs)],"_dendro",sep="")
+  
+  dendro.plot<-plot_grid(plotlist = dendro.plot.list,align="v",nrow=1,rel_heights=trait.count+2.5)
   
   chrom.plot<-plot_grid(dendro.plot,trait.plot,ncol=2,rel_widths = c(3,region.count),align="v")
  # ggsave(paste("Plots/Colocalization/colocate-chromosome-",unique(colocate$chromosome)[i],".pdf",sep=""),plot=chrom.plot,width=6,height=16)

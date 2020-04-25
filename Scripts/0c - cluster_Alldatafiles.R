@@ -60,9 +60,6 @@ if(any(args==2))
    cat("\nBeginning Script 2.\n")
    source("Scripts/2 - Make manhattan plots.R")
    cat("\nCompleted Script 2.\n")
-}   
-if(any(args=="2b"))
-{   
    cat("\nBeginning Script 2b single manhattan plots.\n")
    source("Scripts/2b (optional) - Make single environment manhattan plots.R")
    cat("\nCompleted Script 2b.\n")
