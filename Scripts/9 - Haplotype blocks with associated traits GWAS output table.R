@@ -19,7 +19,7 @@ sig.sug.fun<-function (x) {
 ##################
 
 ##### condense to single entry per region (collapse genome blocks) 
-colocate<-colocate %>% group_by(region,trait_env) %>%
+colocate<-colocate %>% dplyr::group_by(region,trait_env) %>%
                       dplyr::summarize(trait=trait[1],  
                                        env=env[1],
                                        pvalue=factor(sig.sug.fun(pvalue)),
@@ -47,7 +47,7 @@ genelist<-merge(genelist,colocate.count,by.x="colocate.block",by.y="region")
 write.csv(genelist,"Tables/Genes/genelist-extended.csv",row.names=F)
 
 
-write.excel(colocate.count)
+write.csv(colocate.count,"Tables/Genes/colocateCount.csv")
 
 trait.count <- colocate %>% group_by(trait,env) %>% filter(pvalue=="significant") %>% 
                             dplyr::summarize(count=length(region)) %>% 
