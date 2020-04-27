@@ -2,6 +2,7 @@
 library(tidyverse)
 library(data.table)
 library(RColorBrewer)
+library(ggplot2)
 library(ggpubr)
 
 #### read in preferences
@@ -110,11 +111,11 @@ for (i in 1:length(traits)){
     # highlights<-highlights %>% group_by(chromosome) %>% mutate(region_col=colours[as.numeric(factor(rank(match(region,levels(region)))))])
     highlights$region_col<-colocate$region_col[match(highlights$region,colocate$region)]
     
-    
+  
     plot<-ggplot(data=snips, aes(x=BPcum, y=-log10(p_wald),color=as.factor(CHR)))+
       geom_point(size=0.4)+scale_color_manual(values=rep(c("grey75",brewer.pal("Blues",n=9)[3]),17))+
       annotate("point",x=highlights$BPcum,y=-log10(highlights$p_wald),col=highlights$region_col,size=0.6)+
-      scale_x_continuous( labels = axisdf$CHR, breaks= axisdf$center, expand = expansion(mult = c(0.02, 0.02))) +
+      scale_x_continuous( labels = axisdf$CHR, breaks= axisdf$center, expand = expand_scale(mult = c(0.02, 0.02))) +
       scale_y_continuous(expand = c(0, 0), limits=c(1,ytop), breaks=seq(from=2, to=ytop,by=2) )+
       theme_light() +
       theme( 
