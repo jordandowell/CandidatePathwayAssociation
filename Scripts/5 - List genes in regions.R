@@ -144,11 +144,19 @@ gene.list<-gene.list %>% group_by(colocate.block) %>% group_by (locus_tag) %>% s
 gene.list<-gene.list[,c(13,1:12)] #shuffle columns for saving
 
 
+
+
 ##### add traits for which the block is significant
 
 
 
-write.csv(gene.list,"Tables/Genes/genelist.csv")
+write.csv(gene.list,"Tables/Genes/Global_genelist.csv")
+#save globalGO terms for later analysis 
+gene.list[is.na(gene.list)] <- ""
+
+write.table(gene.list[,c("locus_tag","Ontology_term")], file=paste("Tables/Genes/ColocateGO/GO_global.txt", sep=""),col.names=FALSE, row.names = FALSE, sep="\t" )  
+
+
 
 ### plot region gene sizes
 
@@ -182,3 +190,62 @@ dev.off()
 
 
 write.csv(gene.count,"Tables/Genes/genecount.csv")
+
+
+
+
+
+
+#create genelist per traits
+
+#replace empty cells with NA
+
+traitgenelist <- genelist %>% mutate_all(na_if,"")
+
+#separate sig and sug trait lists
+sugtrait.genelist <- traitgenelist[!is.na(traitgenelist$sug.traits),]
+sigtrait.genelist <- traitgenelist[!is.na(traitgenelist$sig.traits),]
+
+#separate by rows
+sugtrait.genelist <- separate_rows(sugtrait.genelist,"sug.traits",sep = " / ",convert = T)
+sigtrait.genelist <- separate_rows(sigtrait.genelist,"sig.traits",sep = " / ",convert = T)
+
+#remove extra data, add significance lable. rename trait column then combine
+
+sugtrait.genelist <- subset(sugtrait.genelist, select = -sig.traits)
+sugtrait.genelist$pvalue <- "suggestive"
+names(sugtrait.genelist)[17]<-"traits"
+
+
+
+sigtrait.genelist <- subset(sigtrait.genelist, select = -sug.traits)
+sigtrait.genelist$pvalue <- "significant"
+names(sigtrait.genelist)[17]<-"traits"
+
+
+Trait.sig.sug.genelist<- rbind(sigtrait.genelist,sugtrait.genelist)
+
+
+
+#separate into list of data frames based on column 
+
+Separated.Trait.sig.sug.genelist <- split( Trait.sig.sug.genelist , f = Trait.sig.sug.genelist$traits )
+
+
+names(Separated.Trait.sig.sug.genelist)<-paste(names(Separated.Trait.sig.sug.genelist),"_colocategenelist",sep = "")
+
+
+#write list of dataframes to csv 
+
+sapply(names(Separated.Trait.sig.sug.genelist), 
+       function (x) write.csv(Separated.Trait.sig.sug.genelist[[x]], file=paste("Tables/Genes/ColocateGenes/",x, ".csv", sep=""), row.names = FALSE )   )
+
+#save separated GO terms for later 
+
+Separated.Trait.sig.sug.genelist[is.na(Separated.Trait.sig.sug.genelist)] <- ""
+
+sapply(names(Separated.Trait.sig.sug.genelist), 
+       function (x) write.table(Separated.Trait.sig.sug.genelist[[x]][,c("locus_tag","Ontology_term")], file=paste("Tables/Genes/ColocateGO/GO_",x, ".txt", sep=""),col.names=FALSE, row.names = FALSE, sep="\t" )   )
+
+
+
