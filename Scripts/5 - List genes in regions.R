@@ -80,11 +80,11 @@ mrna$attributes<-NULL
     big.list<-rbind(big.list,missing.snps)
 
 #######
-sig.list<-read.table("Tables/Blocks/sigsnips_to_genomeblocks.txt",header=T)
-genemap<-read.table("Tables/Blocks/condensed_genome_blocks.txt",header=T)
-colocate<-read.table("Tables/Blocks/colocate_table.txt")
+sig.list<-read.table("Tables/Colocate/Blocks/sigsnips_to_genomeblocks.txt",header=T)
+genemap<-read.table("Tables/Colocate/Blocks/condensed_genome_blocks.txt",header=T)
+colocate<-read.table("Tables/Colocate/Blocks/colocate_table.txt")
 genemap$colocate.block<-genemap$colocate.region #rename
-sig.snips<-read.table("Tables/Blocks/signif_snps_alltraits.txt")
+sig.snips<-read.table("Tables/Colocate/Blocks/signif_snps_alltraits.txt")
 
 
 ### add colocate block name to block key
@@ -150,11 +150,11 @@ gene.list<-gene.list[,c(13,1:12)] #shuffle columns for saving
 
 
 
-write.csv(gene.list,"Tables/Genes/Global_genelist.csv")
+write.csv(gene.list,"Tables/Colocate/Genes/Global_genelist.csv")
 #save globalGO terms for later analysis 
 gene.list[is.na(gene.list)] <- ""
 
-write.table(gene.list[,c("locus_tag","Ontology_term")], file=paste("Tables/Genes/ColocateGO/GO_global.txt", sep=""),col.names=FALSE, row.names = FALSE, sep="\t" )  
+write.table(gene.list[,c("locus_tag","Ontology_term")], file=paste("Tables/Colocate/Genes/ColocateGO/GO_global.txt", sep=""),col.names=FALSE, row.names = FALSE, sep="\t" )  
 
 
 
@@ -181,7 +181,7 @@ genes.plot<-plotbase+geom_point(shape=21,col="gray",size=2)+
 
 #ggsave("Plots/Colocalization/nr_genes.pdf",genes.plot, width=18, height=10)
 
-pdf("Plots/Colocalization/nr_genes.pdf", width=18, height=10)
+pdf("Plots/Colocalization/Dendrograms/nr_genes.pdf", width=18, height=10)
 genes.plot
 dev.off()
 
@@ -189,7 +189,7 @@ dev.off()
 
 
 
-write.csv(gene.count,"Tables/Genes/genecount.csv")
+write.csv(gene.count,"Tables/Colocate/Genes/genecount.csv")
 
 
 

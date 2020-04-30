@@ -4,9 +4,9 @@ library(tidyverse)
 
 
 
-colocate<-read.table("Tables/Blocks/colocate_table.txt")
-genecount<-read.csv("Tables/Genes/genecount.csv")[,c(2,4)]
-genelist<-read.csv("Tables/Genes/genelist.csv")
+colocate<-read.table("Tables/Colocate/Blocks/colocate_table.txt")
+genecount<-read.csv("Tables/Colocate/Genes/genecount.csv")[,c(2,4)]
+genelist<-read.csv("Tables/Colocate/Genes/genelist.csv")
   genelist$X<-NULL
 
 
@@ -17,6 +17,7 @@ sig.sug.fun<-function (x) {
   return(y)
 }
 ##################
+
 
 ##### condense to single entry per region (collapse genome blocks) 
 colocate<-colocate %>% dplyr::group_by(region,trait_env) %>%
@@ -30,8 +31,6 @@ colocate<-merge(colocate,genecount,by.x="region",by.y="colocate.block",all=T)
 
 
 
-
-
 colocate.count<- colocate %>% filter(trait_env!="Tolerance_logdiff",trait_env!="Tolerance_water") %>%
                               group_by(region) %>%
                               dplyr::summarize(sig.nr=length(unique(trait_env[pvalue=="significant"])),
@@ -40,22 +39,29 @@ colocate.count<- colocate %>% filter(trait_env!="Tolerance_logdiff",trait_env!="
                                         sig.traits=paste(as.character(unique(trait_env[pvalue=="significant"])),collapse=" / "),
                                         sug.traits=paste(as.character(unique(trait_env[pvalue=="suggestive"])),collapse=" / "))
 
-colocate.count$region<-sub("-","_",colocate.count$region) # otherwise excel will change region ID's to dates
+#writing is csv so the following is unecessary
+#colocate.count$region<-sub("-","_",colocate.count$region) # otherwise excel will change region ID's to dates
+
+
 
 genelist<-merge(genelist,colocate.count,by.x="colocate.block",by.y="region")
 
-write.csv(genelist,"Tables/Genes/genelist-extended.csv",row.names=F)
+
+write.csv(genelist,"Tables/Colocate/Genes/genelist-extended.csv",row.names=F)
 
 
-write.csv(colocate.count,"Tables/Genes/colocateCount.csv")
+write.csv(colocate.count,"Tables/Colocate/Genes/colocateCount.csv")
 
+#significant count 
 trait.count <- colocate %>% group_by(trait,env) %>% filter(pvalue=="significant") %>% 
                             dplyr::summarize(count=length(region)) %>% 
                             spread(env,count)
 
-write.csv(trait.count,"Tables/Genes/trait-regioncount.csv")
+write.csv(trait.count,"Tables/Colocate/Genes/trait-regioncount.csv")
 
+#suggestive couont
 trait.count.suggestive <- colocate %>% group_by(trait,env) %>% filter(pvalue=="suggestive") %>% 
   dplyr::summarize(sug.count=length(region)) %>% 
   spread(env,sug.count)
+View(trait.count.suggestive)
 

@@ -21,7 +21,7 @@ for(Packagesneeded in requiredPackages){
    if(!require(Packagesneeded,character.only = TRUE)) install.packages(Packagesneeded)
    library(Packagesneeded,character.only = TRUE)
 }
-system("chmod -R 755 ~/GWAS_pipeline") # grant permissions (to avoid access denied errors)
+system("chmod -R 755 ../GWAS_pipeline") # grant permissions (to avoid access denied errors)
 pvalue_cutoff <- 1 # only change this for debugging; 1 = Bonferroni = 1; 2 = "suggested" 0.001 threshold
 source("Scripts/functions.R")
 

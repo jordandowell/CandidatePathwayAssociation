@@ -1,17 +1,16 @@
-if (!requireNamespace("BiocManager", quietly=TRUE)) + install.packages("BiocManager")
- BiocManager::install("topGO")
+
  library("topGO")
  
  
  
  #create file list of all files in Colocate GO & Colocate Genes for global 
- GO_term_files<-list.files(path = "Tables/Genes/ColocateGO/", pattern = "global.txt")
+ GO_term_files<-list.files(path = "Tables/Colocate/Genes/ColocateGO/", pattern = "global.txt")
  
  for (j in 1:length(GO_term_files)) {
     
 
  #import GO data
- geneID2GO<-readMappings(file=paste("Tables/Genes/ColocateGO/",GO_term_files[j],sep = ""))
+ geneID2GO<-readMappings(file=paste("Tables/Colocate/Genes/ColocateGO/",GO_term_files[j],sep = ""))
 
  
  geneNames<-names(geneID2GO)
@@ -55,7 +54,7 @@ if (!requireNamespace("BiocManager", quietly=TRUE)) + install.packages("BiocMana
        topNodes = 20
     )
     
-   write.csv(allRes, paste("Tables/Genes/ColocateGOResults/Global_Colocate_",GOTYPES[i],
+   write.csv(allRes, paste("Tables/Colocate/Genes/ColocateGOResults/Global_Colocate_",GOTYPES[i],
     ".csv",sep = ""))
     
     
@@ -78,12 +77,12 @@ if (!requireNamespace("BiocManager", quietly=TRUE)) + install.packages("BiocMana
  
  
  #create file list of all files in Colocate GO & Colocate Genes for global 
- GO_term_files<-list.files(path = "Tables/Genes/ColocateGO/", pattern = ".txt")
+ GO_term_files<-list.files(path = "Tables/Colocate/Genes/ColocateGO/", pattern = ".txt")
  GO_term_files<-grep(GO_term_files, pattern='global.txt', invert=T, value=T)
  
  
  
- GO_factor_files<-list.files(path = "Tables/Genes/ColocateGenes/", pattern = ".csv")
+ GO_factor_files<-list.files(path = "Tables/Colocate/Genes/ColocateGenes/", pattern = ".csv")
  GO_factor_files<-grep(GO_factor_files, pattern='global.csv', invert = T, value=T)
  
  
@@ -94,13 +93,13 @@ if (!requireNamespace("BiocManager", quietly=TRUE)) + install.packages("BiocMana
     
     try({
     #import GO data
-    geneID2GO<-readMappings(file=paste("Tables/Genes/ColocateGO/",GO_term_files[j],sep = ""))
+    geneID2GO<-readMappings(file=paste("Tables/Colocate/Genes/ColocateGO/",GO_term_files[j],sep = ""))
     
     
     geneNames<-names(geneID2GO)
     
  #import significance level
- GOfactor<- read.csv(paste("Tables/Genes/ColocateGenes/",GO_factor_files[j],sep=""))
+ GOfactor<- read.csv(paste("Tables/Colocate/Genes/ColocateGenes/",GO_factor_files[j],sep=""))
  
  
  GOfactor<-GOfactor[,c("locus_tag","pvalue")]
@@ -152,7 +151,7 @@ if(length(geneNames)==length(mySignificantGenes)){
         topNodes = 20
      )
      
-     write.csv(allRes, paste("Tables/Genes/ColocateGOResults/GO_Colocate_",GO_resultnames[j],"_",GOTYPES[i],
+     write.csv(allRes, paste("Tables/Colocate/Genes/ColocateGOResults/GO_Colocate_",GO_resultnames[j],"_",GOTYPES[i],
                              ".csv",sep = ""))
      
      

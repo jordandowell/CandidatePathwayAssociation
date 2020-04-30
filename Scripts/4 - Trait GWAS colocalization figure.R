@@ -14,10 +14,10 @@ colors<-c("#1b9e77", "gray85")
 
 envs<-as.character(read.table("environments_to_run.txt")[,1])
 
-sig.blocks<-read.table("Tables/Blocks/traits_to_genomeblocks_signif.txt", header=T)
-sug.blocks<-read.table("Tables/Blocks/traits_to_genomeblocks_sugest.txt", header=T)
-sig.list<-read.table("Tables/Blocks/sigsnips_to_genomeblocks.txt",header=T)
-sighap_to_genomehap<-read.table("Tables/Blocks/condensed_genome_blocks.txt",header=T)
+sig.blocks<-read.table("Tables/Colocate/Blocks/traits_to_genomeblocks_signif.txt", header=T)
+sug.blocks<-read.table("Tables/Colocate/Blocks/traits_to_genomeblocks_sugest.txt", header=T)
+sig.list<-read.table("Tables/Colocate/Blocks/sigsnips_to_genomeblocks.txt",header=T)
+sighap_to_genomehap<-read.table("Tables/Colocate/Blocks/condensed_genome_blocks.txt",header=T)
 
 #### set up data to feed into plotting
 colocate<-rbind(sig.blocks,sug.blocks[sug.blocks$hapID%in%sig.blocks$hapID,])
@@ -34,7 +34,7 @@ colocate<- colocate %>% mutate(beta.sign=sign(beta))
 
 colocate$region<-factor(colocate$region)
 
-write.table(colocate,"Tables/Blocks/colocate_table.txt")
+write.table(colocate,"Tables/Colocate/Blocks/colocate_table.txt")
 
 ############## function that helps with settting a region as significant if it's only significant for one of it's component genome haplotype blocks
 sig.sug.fun<-function (x) {
@@ -100,7 +100,7 @@ comb.plot<-plot_grid(Env.dendro+theme(plot.margin = unit(c(0, 0, 0, 0), "cm")),
 trait.to.region.ratio<-length(levels(plot.data$region))/length(Env.label.order)
 
 #ggsave(paste("Plots/Colocalization/colocate-",envs[i],".pdf",sep=""),plot=comb.plot,width=22,height=6)
-pdf(paste("Plots/Colocalization/colocate-",envs[i],".png",sep=""),width=22,height=6)
+pdf(paste("Plots/Colocalization/Dendrograms/colocate-",envs[i],".png",sep=""),width=22,height=6)
 comb.plot
 dev.off()
 

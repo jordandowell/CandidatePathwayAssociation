@@ -15,13 +15,13 @@ prefs<-read.table("Scripts/### Preferences ###",header=F,sep="=",skip=1)
 
 exclude<-big.list[!big.list$SNP%in%sig.snips$rs,]
 
-write.table<-write.table(exclude$SNP, "Tables/Blocks/snps_NOT_in_sig_blocks.txt", sep="\t", row.names=F, col.names=T, quote=F)
+write.table<-write.table(exclude$SNP, "Tables/Colocate/Blocks/snps_NOT_in_sig_blocks.txt", sep="\t", row.names=F, col.names=T, quote=F)
 
 system(paste("./Software/plink --tped Software/",SNPset,".tped --tfam Software/",SNPset,".tfam --exclude Tables/Blocks/snps_NOT_in_sig_blocks.txt --blocks 'no-pheno-req' 'no-small-max-span' --blocks-max-kb 2000000 --blocks-strong-lowci 0.7005 --out Tables/Blocks/re_sig_blocks --allow-extra-chr --blocks-inform-frac 0.9",sep=""))
 
 
 ##### generate block id for snips
-new.sig.blocks<-fread("Tables/Blocks/re_sig_blocks.blocks.det")
+new.sig.blocks<-fread("Tables/Colocate/Blocks/re_sig_blocks.blocks.det")
 
 if (dim(new.sig.blocks)[1]>0) {
 new.sig.blocks$Chr_num<- as.integer(gsub("Ha412HOChr","",new.sig.blocks$CHR))
@@ -82,16 +82,16 @@ sighap_to_genomehap$sig.hap<-sig.list$sigblock_hapID[match(sighap_to_genomehap$g
 sighap_to_genomehap$colocate.region<-sig.list$region[match(sighap_to_genomehap$genome.hap,sig.list$hapID)]
 
 ### save some of the blocks objects for later
-write.table<-write.table(sig.blocks, "Tables/Blocks/traits_to_genomeblocks_signif.txt", sep="\t", row.names=F, col.names=T)
-write.table<-write.table(sug.blocks, "Tables/Blocks/traits_to_genomeblocks_sugest.txt", sep="\t", row.names=F, col.names=T)
-write.table<-write.table(sig.list, "Tables/Blocks/sigsnips_to_genomeblocks.txt", sep="\t", row.names=F, col.names=T)
-write.table<-write.table(sighap_to_genomehap, "Tables/Blocks/condensed_genome_blocks.txt", sep="\t", row.names=F, col.names=T)
+write.table<-write.table(sig.blocks, "Tables/Colocate/Blocks/traits_to_genomeblocks_signif.txt", sep="\t", row.names=F, col.names=T)
+write.table<-write.table(sug.blocks, "Tables/Colocate/Blocks/traits_to_genomeblocks_sugest.txt", sep="\t", row.names=F, col.names=T)
+write.table<-write.table(sig.list, "Tables/Colocate/Blocks/sigsnips_to_genomeblocks.txt", sep="\t", row.names=F, col.names=T)
+write.table<-write.table(sighap_to_genomehap, "Tables/Colocate/Blocks/condensed_genome_blocks.txt", sep="\t", row.names=F, col.names=T)
 
 #### calculate LD (D prime) for significant snps
 
 system(paste("./Software/plink --tped Software/",SNPset,".tped --tfam Software/",SNPset,".tfam --exclude Tables/Blocks/snps_NOT_in_sig_blocks.txt --r2 dprime yes-really --ld-window-kb 2000000 --ld-window-r2 0.0 --ld-window 1000 --out Tables/Blocks/ldtable --allow-extra-chr",sep=""))
 
-ld.table<-fread("Tables/Blocks/ldtable.ld")
+ld.table<-fread("Tables/Colocate/Blocks/ldtable.ld")
 
 
 ### plot new blocks and ld
@@ -176,7 +176,7 @@ hap.plot<-hap.plot+geom_text_repel(data=test,aes(x=x,y=y,label=colocate.region,g
 
 legend<-get_legend(plot)
 
-pdf(paste("Plots/Colocalization/Chromosome-",Chr.num,".pdf",sep=""),height=7.5,width=10.5)
+pdf(paste("Plots/Colocalization/ChromosomeLD/Chromosome-",Chr.num,".pdf",sep=""),height=7.5,width=10.5)
 
 # png(paste("Plots/Colocalization/Chromosome-",i,".png",sep=""),height=750,width=1050)
 

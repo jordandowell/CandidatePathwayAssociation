@@ -44,7 +44,7 @@ for (i in 1:length(traits)) {
   
   pdf(
     paste(
-      "Plots/Manhattans/",
+      "Plots/Manhattans/single_env",
       traits[i],
       "-",
       envs[q],
@@ -105,3 +105,4 @@ for (i in 1:length(traits)) {
    }
   
 }
+

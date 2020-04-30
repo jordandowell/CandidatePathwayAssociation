@@ -16,9 +16,9 @@ prefs<-read.table("Scripts/### Preferences ###",header=F,sep="=",skip=1)
 colours<-rep(c(brewer.pal(8,"Dark2"))[-7],3)
 
 
-sig.list<-read.table("Tables/Blocks/sigsnips_to_genomeblocks.txt",header=T)
-genemap<-read.table("Tables/Blocks/condensed_genome_blocks.txt",header=T)
-colocate<-read.table("Tables/Blocks/colocate_table.txt")
+sig.list<-read.table("Tables/Colocate/Blocks/sigsnips_to_genomeblocks.txt",header=T)
+genemap<-read.table("Tables/Colocate/Blocks/condensed_genome_blocks.txt",header=T)
+colocate<-read.table("Tables/Colocate/Blocks/colocate_table.txt")
 
 colocate<- colocate %>% group_by(chromosome) %>% mutate(region_col=colours[as.numeric(factor(rank(match(region,levels(region)))))])
 
@@ -131,7 +131,7 @@ for (i in 1:length(traits)){
    # ggsave(paste("Plots/Manhattans_regionhighlight/single_env/",traits[i],"_",envs[q],".png",sep=""),plot, height=4.5,width=7.5, units="in",dpi=300)
   
     #png(paste("Plots/Manhattans_regionhighlight/single_env/",traits[i],"_",envs[q],".png",sep=""),height=4.5,width=7.5, units = "in",res = 300)
-   pdf(paste("Plots/Manhattans_regionhighlight/single_env/",traits[i],"_",envs[q],".pdf",sep=""),height=4.5,width=7.5)
+   pdf(paste("Plots/Colocalization/Manhattans_regionhighlight/single_env/",traits[i],"_",envs[q],".pdf",sep=""),height=4.5,width=7.5)
      print(plot)
     dev.off()
     
@@ -144,7 +144,7 @@ for (i in 1:length(traits)){
     comb.plot<-plot_grid(plotlist = comb.plot.list,align="h",nrow=2)
   
   #ggsave(paste("Plots/Manhattans_regionhighlight/Manhattan-region-",traits[i],".png",sep=""),plot=comb.plot,height=9,width=15, units="in",dpi=300)
-  pdf(paste("Plots/Manhattans_regionhighlight/Manhattan-region-",traits[i],".png",sep=""),height=4.5,width=7.5)
+  pdf(paste("Plots/Colocalization/Manhattans_regionhighlight/Manhattan-region-",traits[i],".png",sep=""),height=4.5,width=7.5)
   print(comb.plot)
   dev.off()
   
