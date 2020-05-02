@@ -1,4 +1,3 @@
-args <- as.numeric(na.exclude(as.numeric(commandArgs())))
 # edit these lines as needed
 ### BEGIN SECTION 1 ###
 
@@ -26,23 +25,10 @@ pvalue_cutoff <- 1 # only change this for debugging; 1 = Bonferroni = 1; 2 = "su
 source("Scripts/functions.R")
 
 
+trait_filename<- "SAMHPLCRetentiontimes200PlotPeakAreas.csv" 
 
-datafiles<-list.files(path = "data/", pattern=".csv")
-datafiles<-datafiles[!grepl("pipeline", datafiles)]
-
-print(datafiles)
-datafilenames<- sub(".(csv)", "", datafiles)
-
-for (LL in 1:length(datafiles)) {
-   trait_filename<-datafiles[LL]
-   environmentalfile<-list.files(path = "data/Environment2", pattern=substr(trait_filename,start=1,stop = 5))
-   #if a matching file does not exist proceed treating this as a common garden experiment 
-   if((is.na(environmentalfile[1]))){
-      process_data(trait_filename = trait_filename) 
-   }else{
-      process_data(trait_filename = trait_filename, env_dat_to_merge = environmentalfile[1]) 
-   }
-
+process_data(trait_filename = trait_filename) 
+   
 
 
 
@@ -50,13 +36,14 @@ for (LL in 1:length(datafiles)) {
  #,env_dat_to_merge = "drought_and_rishi.csv")
 set_threshold(method = pvalue_cutoff)
 ##############################
-####### END SECTItrait.data<-pheno.data[, select_cols]N ##########
+####### END SECTION ##########
 ##############################
 
 
 
 
-
+#placed the args here so that the above does not repeatedly run
+args <- as.numeric(na.exclude(as.numeric(commandArgs())))
 ##############################
 ### PIPELINE SCRIPTS 1-8 #####
 ##############################
@@ -154,8 +141,3 @@ if(FALSE) # change to TRUE to install all required packages
 ### END APPENDIX 1 ###
 
 
-           
-file.rename("Plots",paste(datafilenames[LL],"_Plots",sep=""))
-file.rename("Tables",paste(datafilenames[LL],"_Plots",sep=""))
-
-}
