@@ -1,7 +1,7 @@
 args <- as.numeric(na.exclude(as.numeric(commandArgs())))
 # edit these lines as needed
 ### BEGIN SECTION 1 ###
-trait_filename <- "SAMHPLCRetentiontimes200PlotPeakAreas.csv"
+
 
 
 #lapply(c("data.table", "qqman", "tidyverse", "RColorBrewer", "ggpubr", "grid", "ggrepel", "gridExtra", "cowplot", "wesanderson", "corrr", "dplyr", "Hmisc", "ggdendro", "urltools", "scales"),library,character.only=TRUE)
@@ -14,19 +14,47 @@ trait_filename <- "SAMHPLCRetentiontimes200PlotPeakAreas.csv"
 ##############################
 ##### BEGIN SECTION ##########
 ##############################
+if (!requireNamespace("BiocManager", quietly=TRUE)) + install.packages("BiocManager")
+BiocManager::install("topGO")
 requiredPackages <- c("data.table", "qqman", "tidyverse", "RColorBrewer", "ggpubr", "grid", "ggrepel", "gridExtra", "cowplot", "wesanderson", "corrr", "dplyr", "Hmisc", "ggdendro", "urltools", "scales")
 for(Packagesneeded in requiredPackages){
    if(!require(Packagesneeded,character.only = TRUE)) install.packages(Packagesneeded)
    library(Packagesneeded,character.only = TRUE)
 }
-system("chmod -R 755 ~/GWAS_pipeline") # grant permissions (to avoid access denied errors)
+system("chmod -R 755 ../GWAS_pipeline") # grant permissions (to avoid access denied errors)
 pvalue_cutoff <- 1 # only change this for debugging; 1 = Bonferroni = 1; 2 = "suggested" 0.001 threshold
 source("Scripts/functions.R")
-process_data(trait_filename = trait_filename) #,env_dat_to_merge = "drought_and_rishi.csv")
+
+
+
+datafiles<-list.files(path = "data/", pattern=".csv")
+datafiles<-datafiles[!grepl("pipeline", datafiles)]
+
+print(datafiles)
+datafilenames<- sub(".(csv)", "", datafiles)
+
+for (LL in 1:length(datafiles)) {
+   trait_filename<-datafiles[LL]
+   environmentalfile<-list.files(path = "data/Environment2", pattern=substr(trait_filename,start=1,stop = 5))
+   #if a matching file does not exist proceed treating this as a common garden experiment 
+   if((is.na(environmentalfile[1]))){
+      process_data(trait_filename = trait_filename) 
+   }else{
+      process_data(trait_filename = trait_filename, env_dat_to_merge = environmentalfile[1]) 
+   }
+
+
+
+
+
+ #,env_dat_to_merge = "drought_and_rishi.csv")
 set_threshold(method = pvalue_cutoff)
 ##############################
 ####### END SECTItrait.data<-pheno.data[, select_cols]N ##########
 ##############################
+
+
+
 
 
 ##############################
@@ -54,7 +82,9 @@ if(any(args==3))
    cat("\nBeginning Script 3.\n")
    source("Scripts/3 - Blocks and heatmaps.R")
    cat("\nCompleted Script 3.\n")
-
+   cat("\nBeginning Script Single Trait 3.\n")
+   source("Scripts/3b\ \(SINGLETRAIT\)\ SNPS\ in\ blocks.R")
+   cat("\nCompleted Script 3.\n")
 }
 if(any(args==4))
 {
@@ -106,6 +136,14 @@ if(any(args==9))
    cat("\nCompleted Script 9.\n")
 }
 
+if(any(args==10))
+{
+   cat("\nBeginning Script 10.\n")
+   source("Scripts/10\ -\ Gene\ Set\ Enrichment\ Colocate.R")
+   source("Scripts/10a\ -\ Gene\ Set\ Enrichment\ Colocate.R")
+   cat("\nCompleted Script 10.\n")
+}
+
 ### BEGIN APPENDIX 1 ###
 if(FALSE) # change to TRUE to install all required packages
 {
@@ -114,3 +152,10 @@ if(FALSE) # change to TRUE to install all required packages
                      "Hmisc", "ggdendro", "urltools", "scales"))
 }
 ### END APPENDIX 1 ###
+
+
+           
+file.rename("Plots",paste(datafilenames[LL],"_Plots",sep=""))
+file.rename("Tables",paste(datafilenames[LL],"_Plots",sep=""))
+
+}
