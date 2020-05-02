@@ -45,7 +45,7 @@ traits_list<- as.character(unlist(as.list(read.csv(paste0("data/",trait_filename
 
 
 ZZ<-1
-for (ZZ in 5:length(traits_list)) {
+for (ZZ in 1:length(traits_list)) {
   traits<- traits_list[ZZ]
   print(traits)
 
