@@ -62,7 +62,8 @@ for (i in 1:length(traits)){
       next
     } ### deal with missing association file
     
-    snips<-fread(paste("Tables/Assoc_files/", paste(traits[i],envs[q],sep="_"), ".assoc.txt", sep=""), header=T)
+    snips<-fread(paste("Tables/Assoc_files/", paste(traits[i],envs[q],sep="_"), ".assoc.txt", sep=""), header="auto")
+   
     
     trait.range<-abs(diff(range(pheno.data[, paste(traits[i],envs[q],sep="_")],na.rm=T)))
 

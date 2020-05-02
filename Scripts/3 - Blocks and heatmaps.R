@@ -17,7 +17,7 @@ exclude<-big.list[!big.list$SNP%in%sig.snips$rs,]
 
 write.table<-write.table(exclude$SNP, "Tables/Colocate/Blocks/snps_NOT_in_sig_blocks.txt", sep="\t", row.names=F, col.names=T, quote=F)
 
-system(paste("./Software/plink --tped Software/",SNPset,".tped --tfam Software/",SNPset,".tfam --exclude Tables/Blocks/snps_NOT_in_sig_blocks.txt --blocks 'no-pheno-req' 'no-small-max-span' --blocks-max-kb 2000000 --blocks-strong-lowci 0.7005 --out Tables/Blocks/re_sig_blocks --allow-extra-chr --blocks-inform-frac 0.9",sep=""))
+system(paste("./Software/plink --tped Software/",SNPset,".tped --tfam Software/",SNPset,".tfam --exclude Tables/Colocate/Blocks/snps_NOT_in_sig_blocks.txt --blocks 'no-pheno-req' 'no-small-max-span' --blocks-max-kb 2000000 --blocks-strong-lowci 0.7005 --out Tables/Colocate/Blocks/re_sig_blocks --allow-extra-chr --blocks-inform-frac 0.9",sep=""))
 
 
 ##### generate block id for snips
@@ -89,7 +89,7 @@ write.table<-write.table(sighap_to_genomehap, "Tables/Colocate/Blocks/condensed_
 
 #### calculate LD (D prime) for significant snps
 
-system(paste("./Software/plink --tped Software/",SNPset,".tped --tfam Software/",SNPset,".tfam --exclude Tables/Blocks/snps_NOT_in_sig_blocks.txt --r2 dprime yes-really --ld-window-kb 2000000 --ld-window-r2 0.0 --ld-window 1000 --out Tables/Blocks/ldtable --allow-extra-chr",sep=""))
+system(paste("./Software/plink --tped Software/",SNPset,".tped --tfam Software/",SNPset,".tfam --exclude Tables/Colocate/Blocks/snps_NOT_in_sig_blocks.txt --r2 dprime yes-really --ld-window-kb 2000000 --ld-window-r2 0.0 --ld-window 1000 --out Tables/Colocate/Blocks/ldtable --allow-extra-chr",sep=""))
 
 ld.table<-fread("Tables/Colocate/Blocks/ldtable.ld")
 
