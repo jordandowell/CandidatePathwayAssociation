@@ -13,13 +13,26 @@
 ##############################
 ##### BEGIN SECTION ##########
 ##############################
-if (!requireNamespace("BiocManager", quietly=TRUE)) + install.packages("BiocManager")
-BiocManager::install("topGO")
+
+
+
 requiredPackages <- c("data.table", "qqman", "tidyverse", "RColorBrewer", "ggpubr", "grid", "ggrepel", "gridExtra", "cowplot", "wesanderson", "corrr", "dplyr", "Hmisc", "ggdendro", "urltools", "scales")
 for(Packagesneeded in requiredPackages){
    if(!require(Packagesneeded,character.only = TRUE)) install.packages(Packagesneeded)
    library(Packagesneeded,character.only = TRUE)
 }
+
+
+BIOPackages <- c("topGO")
+for(Packagesneeded in BIOPackages){
+   if(!require(Packagesneeded,character.only = TRUE)) BiocManager::install("topGO")
+   library(Packagesneeded,character.only = TRUE)
+}
+
+
+
+
+
 system("chmod -R 755 ../GWAS_pipeline") # grant permissions (to avoid access denied errors)
 pvalue_cutoff <- 1 # only change this for debugging; 1 = Bonferroni = 1; 2 = "suggested" 0.001 threshold
 source("Scripts/functions.R")
