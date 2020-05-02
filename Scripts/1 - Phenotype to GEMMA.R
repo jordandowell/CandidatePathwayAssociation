@@ -50,9 +50,9 @@ dir.create(("Tables/Colocate/Genes/ColocateGOResults"))
 dir.create(("Tables/SingleTrait/"))
 dir.create(("Tables/SingleTrait/Blocks/"))
 dir.create(("Tables/SingleTrait/Genes/"))
-dir.create(("Tables/SingleTrait/Genes/ColocateGenes"))
-dir.create(("Tables/SingleTrait/Genes/ColocateGO"))
-dir.create(("Tables/SingleTrait/Genes/ColocateGOResults"))
+dir.create(("Tables/SingleTrait/Genes/Genes"))
+dir.create(("Tables/SingleTrait/Genes/GO"))
+dir.create(("Tables/SingleTrait/Genes/GOResults"))
 
 setwd("Software")
 
