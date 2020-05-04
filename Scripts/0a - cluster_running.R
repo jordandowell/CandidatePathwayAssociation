@@ -33,7 +33,7 @@ for(Packagesneeded in BIOPackages){
 
 
 
-system("chmod -R 755 ../GWAS_pipeline") # grant permissions (to avoid access denied errors)
+system("chmod -R 755 ../GWASPIPELINE") # grant permissions (to avoid access denied errors)
 pvalue_cutoff <- 1 # only change this for debugging; 1 = Bonferroni = 1; 2 = "suggested" 0.001 threshold
 source("Scripts/functions.R")
 
@@ -83,7 +83,7 @@ if(any(args==3))
    source("Scripts/3 - Blocks and heatmaps.R")
    cat("\nCompleted Script 3.\n")
    cat("\nBeginning Script Single Trait 3.\n")
-   source("Scripts/3b\ \(SINGLETRAIT\)\ SNPS\ in\ blocks.R")
+   source("Scripts/3b (SINGLETRAIT) SNPS in blocks.R")
    cat("\nCompleted Script 3.\n")
 }
 if(any(args==4))
@@ -139,8 +139,8 @@ if(any(args==9))
 if(any(args==10))
 {
    cat("\nBeginning Script 10.\n")
-   source("Scripts/10\ -\ Gene\ Set\ Enrichment\ Colocate.R")
-   source("Scripts/10a\ -\ Gene\ Set\ Enrichment\ Colocate.R")
+   source("Scripts/10 - Gene Set Enrichment Colocate.R")
+   source("Scripts/10a - Gene Set Enrichment Colocate.R")
    cat("\nCompleted Script 10.\n")
 }
 
