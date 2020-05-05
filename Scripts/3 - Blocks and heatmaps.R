@@ -94,8 +94,9 @@ system(paste("./Software/plink --tped Software/",SNPset,".tped --tfam Software/"
 ld.table<-fread("Tables/Colocate/Blocks/ldtable.ld")
 
 
-### plot new blocks and ld
 
+### plot new blocks and ld
+if (dim(ld.table)[1]>1) { #add protection for thowing an error due to singletons
 for (i in 1:length(unique(ld.table$CHR_A))) {
 chrom<-ld.table[ld.table$CHR_A==unique(ld.table$CHR_A)[i],]
 
@@ -198,4 +199,4 @@ popViewport(1)
 dev.off()
 
 }
-
+}

@@ -265,6 +265,12 @@ if (!(paste(traits,"_ldtable.ld",sep="")%in%dir("Tables/SingleTrait/Blocks/"))) 
 }
 
 ld.table<-fread(paste("Tables/SingleTrait/Blocks/",traits,"_ldtable.ld",sep = ""))
+#check to make sure that the table was filled. if all snips are singletons on individual choromosomes the file will be empty
+if (dim(ld.table)[1]==0) {
+  next
+}
+
+
 ### plot new blocks and ld
 
 for (i in 1:length(unique(ld.table$CHR_A))) {
