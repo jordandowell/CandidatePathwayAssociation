@@ -126,5 +126,5 @@ for (i in 1:length(traits)){
 
 sig.snips<-unique(sig.snips.save,by="rs")[,1:3]
 
-write.table<-write.table(sig.snips.save, "Tables/Colocate/Blocks/signif_snps_alltraits.txt", sep="\t", row.names=F, col.names=T)
+write.table<-write.table(sig.snips.save, "Tables/Colocate/Blocks/signif_snps_alltraits.txt", sep="\t", row.names=F)
 
