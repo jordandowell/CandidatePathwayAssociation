@@ -61,8 +61,9 @@ for (i in 1:length(traits)) {
       paste(traits[i], envs[q], sep = "_"),
       ".assoc.txt",
       sep = ""
-    ),
-    header = T)
+    )#,
+    #header = T
+    )
   
   ##### bit that makes the plot
   pvalue <- snips$p_wald
