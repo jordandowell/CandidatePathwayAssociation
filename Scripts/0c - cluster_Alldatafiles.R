@@ -37,9 +37,9 @@ source("Scripts/functions.R")
 datafiles<-list.files(path = "data/", pattern=".csv")
 datafiles<-datafiles[!grepl("pipeline", datafiles)]
 
-print(datafiles)
+print(datafiles[1])
 datafilenames<- sub(".(csv)", "", datafiles)
-
+LL<-2
 for (LL in 1:length(datafiles)) {
    trait_filename<-datafiles[LL]
    environmentalfile<-list.files(path = "data/Environment2", pattern=substr(trait_filename,start=1,stop = 5))
@@ -48,7 +48,7 @@ for (LL in 1:length(datafiles)) {
       process_data(trait_filename = trait_filename) 
    }else{
       process_data(trait_filename = trait_filename, env_dat_to_merge = environmentalfile[1]) 
-   }
+  }
    
    
    
@@ -163,6 +163,7 @@ for (LL in 1:length(datafiles)) {
    
    
    file.rename("Plots",paste(datafilenames[LL],"_Plots",sep=""))
-   file.rename("Tables",paste(datafilenames[LL],"_Plots",sep=""))
+   file.rename("Tables",paste(datafilenames[LL],"_Tables",sep=""))
    
-}
+   }
+   
