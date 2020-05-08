@@ -122,7 +122,7 @@ for (i in 1:length(genemap$genome.hap)) {
   }
   if(sum(chrom.mrna$start>genemap$start[i]&chrom.mrna$end<genemap$stop[i])==0) {
       single.snp.genes<-unique(c(last(which(chrom.mrna$start<genemap$start[i])),
-                                  first(which(chrom.mrna$end>genemap$stop[i]))))
+                                  dplyr::first(which(chrom.mrna$end>genemap$stop[i]))))
       genemap$nr.genes[i]<-length(single.snp.genes)
       block.mrna<-chrom.mrna[single.snp.genes, ]
   }
@@ -139,7 +139,7 @@ for (i in 1:length(genemap$genome.hap)) {
 gene.list$sig.hap<-genemap$sig.hap[match(gene.list$genome.hap,genemap$genome.hap)]
 gene.list$colocate.block<-genemap$colocate.block[match(gene.list$genome.hap,genemap$genome.hap)]
 
-gene.list<-gene.list %>% group_by(colocate.block) %>% group_by (locus_tag) %>% slice(1) ## remove duplicate genes from singif snps block
+gene.list<-gene.list %>% group_by(colocate.block) %>% group_by (locus_tag) %>% dplyr::slice(1) ## remove duplicate genes from singif snps block
 
 gene.list<-gene.list[,c(13,1:12)] #shuffle columns for saving
 
@@ -152,11 +152,13 @@ gene.list<-gene.list[,c(13,1:12)] #shuffle columns for saving
 
 write.csv(gene.list,"Tables/Colocate/Genes/Global_genelist.csv")
 #save globalGO terms for later analysis 
-gene.list[is.na(gene.list)] <- ""
 
-write.table(gene.list[,c("locus_tag","Ontology_term")], file=paste("Tables/Colocate/Genes/ColocateGO/GO_global.txt", sep=""),col.names=FALSE, row.names = FALSE, sep="\t" )  
+GO.list <- sapply(gene.list, as.character)
+GO.list[is.na(GO.list)] <- ""
 
+write.table(GO.list[,c("locus_tag","Ontology_term")], file=paste("Tables/Colocate/Genes/ColocateGO/GO_global.txt", sep=""),col.names=FALSE, row.names = FALSE, sep="\t" )  
 
+#View(head(gene.list))
 
 ### plot region gene sizes
 

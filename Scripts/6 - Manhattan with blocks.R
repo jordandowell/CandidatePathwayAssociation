@@ -68,7 +68,7 @@ for (i in 1:length(traits)){
     # pdf(paste("Plots/Manhattans/single_env/",traits[i],"-",envs[q],"_ManhattanPlot.pdf",sep=""),height=5.5,width=7.5)
     label<-paste(traits[i])
     print(label)
-    snips<-fread(paste("Tables/Assoc_files/",paste(traits[i],envs[q],sep="_"),".assoc.txt",sep=""),header=T)
+    snips<-fread(paste("Tables/Assoc_files/",paste(traits[i],envs[q],sep="_"),".assoc.txt",sep=""))
     snips$CHR<- as.integer(gsub("Ha412HOChr","",snips$chr))
     
     snips<-merge(snips,big.list,by.x="rs",by.y="SNP")
@@ -87,7 +87,7 @@ for (i in 1:length(traits)){
             group_by(CHR) %>% 
             dplyr::summarise(chr_len=max(ps)) %>%  # Compute chromosome size
             mutate(tot=cumsum(chr_len)-chr_len) %>% # Calculate cumulative position of each chromosome
-            select(-chr_len)
+            dplyr::select(-chr_len)
     
     chr_cumsum$tot<-chr_cumsum$tot+c((spacer*chr_cumsum$CHR)-spacer)
     

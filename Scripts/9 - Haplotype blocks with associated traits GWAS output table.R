@@ -63,7 +63,7 @@ write.csv(trait.count,"Tables/Colocate/Genes/trait-regioncount.csv")
 trait.count.suggestive <- colocate %>% group_by(trait,env) %>% filter(pvalue=="suggestive") %>% 
   dplyr::summarize(sug.count=length(region)) %>% 
   spread(env,sug.count)
-View(trait.count.suggestive)
+
 
 
 

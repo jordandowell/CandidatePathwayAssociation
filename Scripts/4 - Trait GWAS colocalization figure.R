@@ -126,7 +126,7 @@ comb.plot<-plot_grid(dendro.plot,trait.plot,ncol=2,rel_widths = c(3,region.count
 
 #ggsave(paste("Plots/Colocalization/colocate-",envs[i],".pdf",sep=""),plot=comb.plot,width=22,height=6)
 pdf(paste("Plots/Colocalization/Dendrograms/colocate-",envs[q],".pdf",sep=""),width=22,height=6)
-comb.plot
+print(comb.plot)
 dev.off()
 
 

@@ -44,7 +44,7 @@
     resultKS.elim <-
        runTest(GOdata, algorithm = "elim", statistic = "ks")
     
-    allRes <- GenTable(
+    try(allRes <- GenTable(
        GOdata,
        classicFisher = resultFisher,
        classicKS = resultKS,
@@ -52,7 +52,7 @@
        orderBy = "elimKS",
        ranksOf = "classicFisher",
        topNodes = 20
-    )
+    ))
     
    write.csv(allRes, paste("Tables/Colocate/Genes/ColocateGOResults/Global_Colocate_",GOTYPES[i],
     ".csv",sep = ""))

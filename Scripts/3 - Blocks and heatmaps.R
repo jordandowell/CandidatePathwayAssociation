@@ -15,7 +15,7 @@ prefs<-read.table("Scripts/### Preferences ###",header=F,sep="=",skip=1)
 
 exclude<-big.list[!big.list$SNP%in%sig.snips$rs,]
 
-write.table<-write.table(exclude$SNP, "Tables/Colocate/Blocks/snps_NOT_in_sig_blocks.txt", sep="\t", row.names=F, col.names=T, quote=F)
+write.table<-write.table(exclude$SNP, "Tables/Colocate/Blocks/snps_NOT_in_sig_blocks.txt", sep="\t", row.names=F, quote=F)
 
 system(paste("./Software/plink --tped Software/",SNPset,".tped --tfam Software/",SNPset,".tfam --exclude Tables/Colocate/Blocks/snps_NOT_in_sig_blocks.txt --blocks 'no-pheno-req' 'no-small-max-span' --blocks-max-kb 2000000 --blocks-strong-lowci 0.7005 --out Tables/Colocate/Blocks/re_sig_blocks --allow-extra-chr --blocks-inform-frac 0.9",sep=""))
 
@@ -82,10 +82,10 @@ sighap_to_genomehap$sig.hap<-sig.list$sigblock_hapID[match(sighap_to_genomehap$g
 sighap_to_genomehap$colocate.region<-sig.list$region[match(sighap_to_genomehap$genome.hap,sig.list$hapID)]
 
 ### save some of the blocks objects for later
-write.table<-write.table(sig.blocks, "Tables/Colocate/Blocks/traits_to_genomeblocks_signif.txt", sep="\t", row.names=F, col.names=T)
-write.table<-write.table(sug.blocks, "Tables/Colocate/Blocks/traits_to_genomeblocks_sugest.txt", sep="\t", row.names=F, col.names=T)
-write.table<-write.table(sig.list, "Tables/Colocate/Blocks/sigsnips_to_genomeblocks.txt", sep="\t", row.names=F, col.names=T)
-write.table<-write.table(sighap_to_genomehap, "Tables/Colocate/Blocks/condensed_genome_blocks.txt", sep="\t", row.names=F, col.names=T)
+write.table<-write.table(sig.blocks, "Tables/Colocate/Blocks/traits_to_genomeblocks_signif.txt", sep="\t", row.names=F)
+write.table<-write.table(sug.blocks, "Tables/Colocate/Blocks/traits_to_genomeblocks_sugest.txt", sep="\t", row.names=F)
+write.table<-write.table(sig.list, "Tables/Colocate/Blocks/sigsnips_to_genomeblocks.txt", sep="\t", row.names=F)
+write.table<-write.table(sighap_to_genomehap, "Tables/Colocate/Blocks/condensed_genome_blocks.txt", sep="\t", row.names=F)
 
 #### calculate LD (D prime) for significant snps
 
@@ -107,7 +107,7 @@ nsnps<-length(chrom.snps)[1]
 
 chrom.snps<-data.table(BP_A=as.numeric(chrom.snps),BP_B=as.numeric(chrom.snps))
 
-chrom<-rbind(chrom,chrom.snps,fill=T)
+chrom<-rbind(chrom,chrom.snps,fill=TRUE)
 
 chrom$bp_A<-fct_reorder(factor(chrom$BP_A),chrom$BP_A)
 chrom$bp_B<-fct_reorder(factor(chrom$BP_B),chrom$BP_B)

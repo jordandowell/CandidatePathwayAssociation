@@ -176,7 +176,7 @@ if((length(sig.snips)==0)){
 
 exclude<-big.list[!big.list$SNP%in%sig.snips$rs,]
 
-write.table<-write.table(exclude$SNP, paste("Tables/SingleTrait/Blocks/",traits,"_snps_NOT_in_sig_blocks.txt",sep=""), sep="\t", row.names=F, col.names=T, quote=F)
+write.table<-write.table(exclude$SNP, paste("Tables/SingleTrait/Blocks/",traits,"_snps_NOT_in_sig_blocks.txt",sep=""), sep="\t", row.names=F, quote=F)
 
 system(paste("./Software/plink --tped Software/",SNPset,".tped --tfam Software/",SNPset,".tfam --exclude ","Tables/SingleTrait/Blocks/",traits,"_snps_NOT_in_sig_blocks.txt"," --blocks 'no-pheno-req' 'no-small-max-span' --blocks-max-kb 2000000 --blocks-strong-lowci 0.7005 --out Tables/SingleTrait/Blocks/",traits,"_re_sig_blocks --allow-extra-chr --blocks-inform-frac 0.9",sep=""))
 

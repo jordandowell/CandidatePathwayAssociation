@@ -38,7 +38,7 @@ pvalue_cutoff <- 1 # only change this for debugging; 1 = Bonferroni = 1; 2 = "su
 source("Scripts/functions.R")
 
 
-trait_filename<- "SAMHPLCRetentiontimes200PlotPeakAreas.csv" 
+trait_filename<- "EcophysCompositeTraits.csv" 
 
 process_data(trait_filename = trait_filename) 
    
@@ -84,7 +84,7 @@ if(any(args==3))
    cat("\nCompleted Script 3.\n")
    cat("\nBeginning Script Single Trait 3.\n")
    source("Scripts/3b (SINGLETRAIT) SNPS in blocks.R")
-   cat("\nCompleted Script 3.\n")
+   cat("\nCompleted Script 3 (SINGLETRAIT).\n")
 }
 if(any(args==4))
 {

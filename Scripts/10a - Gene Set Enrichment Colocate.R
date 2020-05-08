@@ -44,7 +44,7 @@
     resultKS.elim <-
        runTest(GOdata, algorithm = "elim", statistic = "ks")
     
-    allRes <- GenTable(
+    try(allRes <- GenTable(
        GOdata,
        classicFisher = resultFisher,
        classicKS = resultKS,
@@ -52,7 +52,7 @@
        orderBy = "elimKS",
        ranksOf = "classicFisher",
        topNodes = 20
-    )
+    ))
     
    write.csv(allRes, paste("Tables/Colocate/Genes/ColocateGOResults/Global_Colocate_",GOTYPES[i],
     ".csv",sep = ""))
@@ -143,7 +143,7 @@ if(length(geneNames)==length(mySignificantGenes)){
      resultKS.elim <-
         runTest(GOdata, algorithm = "elim", statistic = "ks")
      
-     allRes <- GenTable(
+     try(allRes <- GenTable(
         GOdata,
         classicFisher = resultFisher,
         classicKS = resultKS,
@@ -151,7 +151,7 @@ if(length(geneNames)==length(mySignificantGenes)){
         orderBy = "elimKS",
         ranksOf = "classicFisher",
         topNodes = 20
-     )
+     ))
      
      write.csv(allRes, paste("Tables/Colocate/Genes/ColocateGOResults/GO_Colocate_",GO_resultnames[j],"_",GOTYPES[i],
                              ".csv",sep = ""))
@@ -249,7 +249,7 @@ if(length(geneNames)==length(mySignificantGenes)){
           resultKS.elim <-
              runTest(GOdata, algorithm = "elim", statistic = "ks")
           
-          allRes <- GenTable(
+         try( allRes <- GenTable(
              GOdata,
              classicFisher = resultFisher,
              classicKS = resultKS,
@@ -257,7 +257,7 @@ if(length(geneNames)==length(mySignificantGenes)){
              orderBy = "elimKS",
              ranksOf = "classicFisher",
              topNodes = 20
-          )
+          ))
           
           write.csv(allRes, paste("Tables/SingleTrait/Genes/GOResults/GO_SingleTrait_Significant_",GO_resultnames[j],"_",GOTYPES[i],
                                   ".csv",sep = ""))
